@@ -1,8 +1,13 @@
 export default function ProductsPage() {
-return (
-<div className="bg-white p-6 rounded-xl shadow">
-<h2 className="text-xl font-semibold mb-4">Daftar Produk</h2>
-<p className="text-gray-600">Belum ada produk. Silakan tambahkan produk baru.</p>
-</div>
-);
+  return (
+    <div>
+      {/* Grid produk (masih kosong) */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {/* Placeholder produk */}
+        <div className="border rounded-lg p-4 text-center text-gray-500">
+          Belum ada produk
+        </div>
+      </div>
+    </div>
+  );
 }
