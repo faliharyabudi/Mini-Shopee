@@ -18,7 +18,13 @@ export default function ProductsLayout({
           />
         </div>
 
-        <h1 className="text-xl font-semibold mb-4">Produk</h1>
+        {/* Judul + Tombol */}
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-xl font-semibold">Produk</h1>
+          <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg">
+            Tambah Produk
+          </button>
+        </div>
 
         {children}
       </div>
