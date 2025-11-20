@@ -6,20 +6,12 @@ export default function ProductsPage() {
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
           <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
-
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
-            Tersedia
-          </span>
-
-          {/* BADGE DISKON */}
-          <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">
-            20% OFF
-          </span>
+          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
+          <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">20% OFF</span>
         </div>
 
         <p className="text-sm font-medium">Kaos Polos Hitam</p>
 
-        {/* HARGA DISKON — perubahan kecil */}
         <div className="mb-2">
           <p className="text-xs text-gray-400 line-through">Rp 65.000</p>
           <p className="text-sm text-gray-800 font-medium">Rp 50.000</p>
@@ -34,10 +26,7 @@ export default function ProductsPage() {
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
           <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
-
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
-            Tersedia
-          </span>
+          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
         </div>
 
         <p className="text-sm font-medium">Celana Jeans Biru</p>
@@ -48,13 +37,16 @@ export default function ProductsPage() {
         </button>
       </div>
 
-      {/* PRODUK 3 */}
+      {/* PRODUK 3 — ADA PEMBARUAN */}
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
           <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+          
+          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
 
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
-            Tersedia
+          {/* BADGE BARU — perubahan baru */}
+          <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-[2px] rounded">
+            Baru
           </span>
         </div>
 
@@ -70,10 +62,8 @@ export default function ProductsPage() {
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
           <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
-
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
-            Tersedia
-          </span>
+          
+          <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
         </div>
 
         <p className="text-sm font-medium">Kemeja Kotak-Kotak</p>
