@@ -10,7 +10,11 @@ export default function ProductsPage() {
           <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">20% OFF</span>
         </div>
 
-        <p className="text-sm font-medium">Kaos Polos Hitam</p>
+        {/* 🔹 perubahan kecil: hover text */}
+        <p className="text-sm font-medium transition-all duration-200 hover:text-gray-900 hover:scale-[1.02]">
+          Kaos Polos Hitam
+        </p>
+
         <p className="text-yellow-400 text-[12px]">★★★★★</p>
         <p className="text-[11px] text-gray-500 mb-1">Terjual 320+</p>
 
@@ -31,7 +35,11 @@ export default function ProductsPage() {
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
         </div>
 
-        <p className="text-sm font-medium">Celana Jeans Biru</p>
+        {/* hover text */}
+        <p className="text-sm font-medium transition-all duration-200 hover:text-gray-900 hover:scale-[1.02]">
+          Celana Jeans Biru
+        </p>
+
         <p className="text-yellow-400 text-[12px]">★★★★☆</p>
         <p className="text-[11px] text-gray-500 mb-1">Terjual 190+</p>
 
@@ -48,15 +56,18 @@ export default function ProductsPage() {
           <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
           
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
-
           <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-[2px] rounded">Baru</span>
         </div>
 
-        <p className="text-sm font-medium">Hoodie Oversize Abu</p>
+        {/* hover text */}
+        <p className="text-sm font-medium transition-all duration-200 hover:text-gray-900 hover:scale-[1.02]">
+          Hoodie Oversize Abu
+        </p>
+
         <p className="text-yellow-400 text-[12px]">★★★★★</p>
         <p className="text-[11px] text-gray-500 mb-1">Terjual 500+</p>
 
-        {/* 🔹 Perubahan baru: Badge Best Seller */}
+        {/* Badge Best Seller */}
         <p className="inline-block bg-yellow-400 text-black text-[10px] px-2 py-[2px] rounded mb-2">
           ⭐ Best Seller
         </p>
@@ -75,7 +86,11 @@ export default function ProductsPage() {
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
         </div>
 
-        <p className="text-sm font-medium">Kemeja Kotak-Kotak</p>
+        {/* hover text */}
+        <p className="text-sm font-medium transition-all duration-200 hover:text-gray-900 hover:scale-[1.02]">
+          Kemeja Kotak-Kotak
+        </p>
+
         <p className="text-yellow-400 text-[12px]">★★★☆☆</p>
         <p className="text-[11px] text-gray-500 mb-1">Terjual 70+</p>
 
