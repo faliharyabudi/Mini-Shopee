@@ -9,7 +9,7 @@ export default function ProductsPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
         {/* PRODUK 1 */}
-        <div className="border border-gray-100 rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
+        <div className="border border-gray-100 rounded-lg p-3 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
             <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:brightness-90"></div>
 
@@ -35,7 +35,7 @@ export default function ProductsPage() {
         </div>
 
         {/* PRODUK 2 — Best Seller */}
-        <div className="border border-gray-100 rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
+        <div className="border border-gray-100 rounded-lg p-3 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
             <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:brightness-90"></div>
 
@@ -58,7 +58,7 @@ export default function ProductsPage() {
         </div>
 
         {/* PRODUK 3 — Baru */}
-        <div className="border border-gray-100 rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
+        <div className="border border-gray-100 rounded-lg p-3 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
             <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:brightness-90"></div>
 
@@ -81,7 +81,7 @@ export default function ProductsPage() {
         </div>
 
         {/* PRODUK 4 */}
-        <div className="border border-gray-100 rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
+        <div className="border border-gray-100 rounded-lg p-3 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
             <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:brightness-90"></div>
 
