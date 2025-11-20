@@ -12,8 +12,6 @@ export default function ProductsPage() {
 
         <p className="text-sm font-medium">Kaos Polos Hitam</p>
         <p className="text-yellow-400 text-[12px]">★★★★★</p>
-
-        {/* 🔹 Perubahan baru - Tambah info penjualan */}
         <p className="text-[11px] text-gray-500 mb-1">Terjual 320+</p>
 
         <div className="mb-2">
@@ -35,8 +33,6 @@ export default function ProductsPage() {
 
         <p className="text-sm font-medium">Celana Jeans Biru</p>
         <p className="text-yellow-400 text-[12px]">★★★★☆</p>
-
-        {/* 🔹 Perubahan baru */}
         <p className="text-[11px] text-gray-500 mb-1">Terjual 190+</p>
 
         <p className="text-sm text-gray-600 mb-2">Rp 150.000</p>
@@ -58,9 +54,12 @@ export default function ProductsPage() {
 
         <p className="text-sm font-medium">Hoodie Oversize Abu</p>
         <p className="text-yellow-400 text-[12px]">★★★★★</p>
-
-        {/* 🔹 Perubahan baru */}
         <p className="text-[11px] text-gray-500 mb-1">Terjual 500+</p>
+
+        {/* 🔹 Perubahan baru: Badge Best Seller */}
+        <p className="inline-block bg-yellow-400 text-black text-[10px] px-2 py-[2px] rounded mb-2">
+          ⭐ Best Seller
+        </p>
 
         <p className="text-sm text-gray-600 mb-2">Rp 120.000</p>
 
@@ -78,8 +77,6 @@ export default function ProductsPage() {
 
         <p className="text-sm font-medium">Kemeja Kotak-Kotak</p>
         <p className="text-yellow-400 text-[12px]">★★★☆☆</p>
-
-        {/* 🔹 Perubahan baru */}
         <p className="text-[11px] text-gray-500 mb-1">Terjual 70+</p>
 
         <p className="text-sm text-gray-600 mb-2">Rp 90.000</p>
