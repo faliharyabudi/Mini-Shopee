@@ -2,7 +2,7 @@ export default function ProductsPage() {
   return (
     <div className="mt-4">
 
-      {/* JUDUL HALAMAN — tambahan kecil */}
+      {/* JUDUL HALAMAN */}
       <h2 className="text-lg font-semibold mb-1">Semua Produk</h2>
       <p className="text-sm text-gray-500 mb-4">Temukan berbagai produk fashion terbaik.</p>
 
@@ -11,7 +11,7 @@ export default function ProductsPage() {
         {/* PRODUK 1 */}
         <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:opacity-90"></div>
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
             <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">20% OFF</span>
           </div>
@@ -31,7 +31,7 @@ export default function ProductsPage() {
         {/* PRODUK 2 */}
         <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:opacity-90"></div>
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
           </div>
 
@@ -46,7 +46,7 @@ export default function ProductsPage() {
         {/* PRODUK 3 */}
         <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:opacity-90"></div>
             
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
 
@@ -66,7 +66,7 @@ export default function ProductsPage() {
         {/* PRODUK 4 */}
         <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
           <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+            <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105 hover:opacity-90"></div>
             
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">Tersedia</span>
           </div>
