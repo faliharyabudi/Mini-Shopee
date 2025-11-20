@@ -5,7 +5,9 @@ export default function ProductsPage() {
       {/* PRODUK 1 */}
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-          <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+          <div className="w-full h-full bg-gray-300 rounded relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_1.5s_infinite] opacity-0 hover:opacity-100"></div>
+          </div>
 
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
             Tersedia
@@ -31,7 +33,9 @@ export default function ProductsPage() {
       {/* PRODUK 2 */}
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-          <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+          <div className="w-full h-full bg-gray-300 rounded relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_1.5s_infinite] opacity-0 hover:opacity-100"></div>
+          </div>
 
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
             Tersedia
@@ -46,10 +50,12 @@ export default function ProductsPage() {
         </button>
       </div>
 
-      {/* PRODUK 3 — dengan badge “Baru” */}
+      {/* PRODUK 3 */}
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-          <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+          <div className="w-full h-full bg-gray-300 rounded relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_1.5s_infinite] opacity-0 hover:opacity-100"></div>
+          </div>
 
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
             Tersedia
@@ -71,7 +77,9 @@ export default function ProductsPage() {
       {/* PRODUK 4 */}
       <div className="border rounded-lg p-3 hover:shadow-lg transition-transform duration-200 hover:-translate-y-1">
         <div className="h-32 bg-gray-200 rounded mb-3 relative overflow-hidden">
-          <div className="w-full h-full bg-gray-300 rounded transform transition-transform duration-200 hover:scale-105"></div>
+          <div className="w-full h-full bg-gray-300 rounded relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_1.5s_infinite] opacity-0 hover:opacity-100"></div>
+          </div>
 
           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
             Tersedia
