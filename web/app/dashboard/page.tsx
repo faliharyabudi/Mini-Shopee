@@ -18,7 +18,12 @@ export default function ProductsPage() {
         </div>
 
         <p className="text-sm font-medium">Kaos Polos Hitam</p>
-        <p className="text-sm text-gray-600 mb-2">Rp 50.000</p>
+
+        {/* HARGA DISKON — perubahan kecil */}
+        <div className="mb-2">
+          <p className="text-xs text-gray-400 line-through">Rp 65.000</p>
+          <p className="text-sm text-gray-800 font-medium">Rp 50.000</p>
+        </div>
 
         <button className="w-full border rounded-lg py-1 text-sm hover:bg-gray-100 transition">
           Lihat Detail
