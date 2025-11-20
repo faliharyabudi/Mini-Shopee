@@ -23,7 +23,8 @@ export default function ProductsPage() {
             <p className="text-sm text-gray-800 font-medium">Rp 50.000</p>
           </div>
 
-          <button className="w-full border rounded-lg py-1 text-sm hover:bg-gray-100 transition">
+          {/* PERUBAHAN KECIL DI SINI */}
+          <button className="w-full border rounded-lg py-1 text-sm transition-all hover:bg-gray-100 hover:shadow-sm hover:-translate-y-[1px]">
             Lihat Detail
           </button>
         </div>
@@ -38,7 +39,7 @@ export default function ProductsPage() {
           <p className="text-sm font-medium">Celana Jeans Biru</p>
           <p className="text-sm text-gray-600 mb-2">Rp 150.000</p>
 
-          <button className="w-full border rounded-lg py-1 text-sm hover:bg-gray-100 transition">
+          <button className="w-full border rounded-lg py-1 text-sm transition-all hover:bg-gray-100 hover:shadow-sm hover:-translate-y-[1px]">
             Lihat Detail
           </button>
         </div>
@@ -58,7 +59,7 @@ export default function ProductsPage() {
           <p className="text-sm font-medium">Hoodie Oversize Abu</p>
           <p className="text-sm text-gray-600 mb-2">Rp 120.000</p>
 
-          <button className="w-full border rounded-lg py-1 text-sm hover:bg-gray-100 transition">
+          <button className="w-full border rounded-lg py-1 text-sm transition-all hover:bg-gray-100 hover:shadow-sm hover:-translate-y-[1px]">
             Lihat Detail
           </button>
         </div>
@@ -74,7 +75,7 @@ export default function ProductsPage() {
           <p className="text-sm font-medium">Kemeja Kotak-Kotak</p>
           <p className="text-sm text-gray-600 mb-2">Rp 90.000</p>
 
-          <button className="w-full border rounded-lg py-1 text-sm hover:bg-gray-100 transition">
+          <button className="w-full border rounded-lg py-1 text-sm transition-all hover:bg-gray-100 hover:shadow-sm hover:-translate-y-[1px]">
             Lihat Detail
           </button>
         </div>
