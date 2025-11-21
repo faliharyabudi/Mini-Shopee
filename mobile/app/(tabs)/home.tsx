@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function HomeScreen() {
   const [query, setQuery] = useState("");
-  const [notifications, setNotifications] = useState(3); 
+  const [notifications, setNotifications] = useState(3);
 
   return (
     <View style={styles.container}>
@@ -58,10 +58,14 @@ export default function HomeScreen() {
 
       {/* banner promo */}
       <Pressable style={styles.promoBanner} onPress={() => console.log("Promo clicked")}>
-          <Text style={styles.promoTitle}>Hello, Sport !</Text>
-              <Text style={styles.promoSubtitle}>
-                  Get Your Special Sale Up 50% Off
-              </Text>
+        <Text style={styles.promoTitle}>Hello, Sport !</Text>
+        <Text style={styles.promoSubtitle}>
+          Get Your Special Sale Up 50% Off
+        </Text>
+        {/* Tombol promo */}
+        <Pressable style={styles.tombolPromo} onPress={() => console.log("Shop Now clicked")}>
+          <Text style={styles.promoButtonText}>Shop now</Text>
+        </Pressable>
       </Pressable>
 
 
