@@ -7,23 +7,34 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function HomeScreen() {
   const [query, setQuery] = useState("");
+  const [notifications, setNotifications] = useState(3); 
 
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>
-        {/* header welcome */}
+        {/* Header welcome */}
         <View>
-          <Text style={styles.welcome}>Welcome Back !</Text>
+          <Text style={styles.welcome}>Welcome Back!</Text>
           <Text style={styles.nameUser}>Alliya Fajrin</Text>
         </View>
 
-        {/* Keranjang */}
-        <Pressable style={styles.cartButton}>
-          <Ionicons name="cart-outline" size={24} color="#333" />
-        </Pressable>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          {/* Keranjang */}
+          <Pressable style={styles.cartButton} onPress={() => console.log("Keranjang clicked")}>
+            <Ionicons name="cart-outline" size={24} color="#333" />
+          </Pressable>
+          {/* Notifikasi */}
+          <Pressable
+            style={[styles.cartButton, { marginLeft: 12 }]}
+            onPress={() => console.log("Notifikasi clicked")}>
+            <View style={{ position: "relative" }}>
+              <Ionicons name="notifications-outline" size={24} color="#333" />
+            </View>
+          </Pressable>
+        </View>
       </View>
 
-      {/* Searchbar: */}
+      {/* Searchbar */}
       <View style={styles.searchRow}>
         <Searchbar
           placeholder="Search products..."
