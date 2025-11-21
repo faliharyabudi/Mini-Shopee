@@ -44,17 +44,11 @@ export default function ProductsPage() {
       {products.map((item) => (
         <div
           key={item.id}
-          className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1"
+          className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1"
         >
-
-          {/* GAMBAR FIX ANTI KEDIP */}
-          <div className="h-36 rounded-lg mb-4 relative overflow-hidden group">
-
-            {/* SHIMMER */}
-            <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
-
-            {/* LAYER GAMBAR */}
-            <div className="absolute inset-0 bg-gray-300 rounded-lg transform transition-transform duration-300 group-hover:scale-110"></div>
+          {/* GAMBAR */}
+          <div className="h-36 bg-gray-100 rounded-lg mb-3 relative overflow-hidden">
+            <div className="w-full h-full bg-gray-300 rounded-lg transform transition-transform duration-300 hover:scale-110" />
 
             {/* STATUS */}
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
@@ -76,13 +70,11 @@ export default function ProductsPage() {
             )}
           </div>
 
-          {/* NAMA */}
-          <p className="text-[13px] font-semibold text-gray-800 leading-tight mb-2">
-            {item.name}
-          </p>
+          {/* NAMA PRODUK */}
+          <p className="text-sm font-semibold text-gray-900">{item.name}</p>
 
           {/* HARGA */}
-          <div className="mb-4">
+          <div className="mb-3">
             {item.oldPrice && (
               <p className="text-xs text-gray-400 line-through">
                 Rp {item.oldPrice.toLocaleString("id-ID")}
@@ -93,11 +85,9 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          {/* BUTTON */}
-          <button className="w-full border rounded-lg py-2 text-sm hover:bg-gray-100 active:scale-95 transition font-medium">
+          <button className="w-full border border-gray-300 rounded-lg py-2 text-sm hover:bg-gray-100 active:scale-95 transition font-medium">
             Lihat Detail
           </button>
-
         </div>
       ))}
 
