@@ -48,6 +48,12 @@ export default function ProductsPage() {
     },
   ];
 
+  // === PERUBAHAN UTAMA STEP 8 ===
+  const filteredProducts =
+    selectedCategory === "Semua"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+
   return (
     <div className="mt-6">
 
@@ -71,7 +77,7 @@ export default function ProductsPage() {
 
       {/* === GRID PRODUK === */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {products.map((item) => (
+        {filteredProducts.map((item) => (
           <div
             key={item.id}
             className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1"
