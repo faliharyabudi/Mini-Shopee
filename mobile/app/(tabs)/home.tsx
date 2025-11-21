@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { styles } from "@/styles/home.styles";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -57,17 +57,26 @@ export default function HomeScreen() {
       </View>
 
       {/* banner promo */}
-      <Pressable style={styles.promoBanner} onPress={() => console.log("Promo clicked")}>
-        <Text style={styles.promoTitle}>Hello, Sport !</Text>
-        <Text style={styles.promoSubtitle}>
-          Get Your Special Sale Up 50% Off
-        </Text>
-        {/* Tombol promo */}
-        <Pressable style={styles.tombolPromo} onPress={() => console.log("Shop Now clicked")}>
-          <Text style={styles.promoButtonText}>Shop now</Text>
-        </Pressable>
-      </Pressable>
-
+      <View style={styles.promoBanner}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* teks banner */}
+          <View style={{ flex: 1 }}>
+            <Text style={styles.promoTitle}>Hello, Sport!</Text>
+            <Text style={styles.promoSubtitle}>Get Your Special Sale Up 50% Off</Text>
+            {/* tombol promo */}
+            <Pressable
+              style={styles.tombolPromo}
+              onPress={() => console.log("Shop Now clicked")}>
+              <Text style={styles.promoButtonText}>Shop now</Text>
+            </Pressable>
+          </View>
+          {/* gambar banner */}
+          <Image
+            source={require('./assets/gambarBanner.png')}
+            style={styles.imageBanner}
+          />
+        </View>
+      </View>
 
     </View>
   );
