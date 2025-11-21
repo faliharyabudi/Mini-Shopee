@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginTop: 20,
+        marginTop: 24,
         marginBottom: 10,
         paddingHorizontal: 16,
     },
@@ -27,8 +27,9 @@ export const styles = StyleSheet.create({
     searchBar: {
         flex: 1,
         backgroundColor: '#F0F0F0',
-        borderRadius: 12,
+        borderRadius: 24,
         elevation: 0,
+        marginTop: 12,
     },
 
     welcome: {
@@ -69,5 +70,23 @@ export const styles = StyleSheet.create({
         height: 16,
         justifyContent: "center",
         alignItems: "center",
+    },
+
+    promoBanner: {
+        backgroundColor: '#FF8C00', 
+        marginTop: 20,
+        borderRadius: 16,
+        padding: 16,
+        height: 200, 
+        shadowColor: "#FF8C00",
+        shadowOffset: { width: 0, height: 12 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 5,
+    },
+    promoTitle: {
+        fontSize: 22, 
+        fontWeight: 'bold',
+        color: '#fff',
     },
 });
