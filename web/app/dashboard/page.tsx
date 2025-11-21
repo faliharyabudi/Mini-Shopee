@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const products = [
     {
@@ -48,14 +49,30 @@ export default function ProductsPage() {
     },
   ];
 
-  // === PERUBAHAN UTAMA STEP 8 ===
-  const filteredProducts =
+  // === FILTER PRODUK BY CATEGORY ===
+  const filteredByCategory =
     selectedCategory === "Semua"
       ? products
       : products.filter((p) => p.category === selectedCategory);
 
+  // === FILTER PRODUK BY SEARCH ===
+  const finalProducts = filteredByCategory.filter((p) =>
+    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="mt-6">
+
+      {/* === SEARCH BAR === */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Cari produk..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
+        />
+      </div>
 
       {/* === FILTER KATEGORI === */}
       <div className="flex items-center justify-between mb-4">
@@ -77,14 +94,14 @@ export default function ProductsPage() {
 
       {/* === GRID PRODUK === */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {filteredProducts.map((item) => (
+        {finalProducts.map((item) => (
           <div
             key={item.id}
             className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1"
           >
             {/* GAMBAR */}
             <div className="h-36 bg-gray-100 rounded-lg mb-3 relative overflow-hidden">
-              <div className="w-full h-full bg-gray-300 rounded-lg transform transition-transform duration-300 hover:scale-110" />
+              <div className="w-full h-full bg-gray-300 rounded-lg transform transition-transform duration-300 hover:scale-110"></div>
 
               <div
                 className="absolute inset-0
