@@ -47,9 +47,9 @@ export default function ProductsPage() {
           className="bg-white border border-gray-200 rounded-xl p-3 shadow hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
         >
 
-          {/* GAMBAR */}
-          <div className="h-36 bg-gray-100 rounded-lg mb-3 relative overflow-hidden">
-            <div className="w-full h-full bg-gray-300 rounded-lg transform transition-transform duration-300 hover:scale-110"></div>
+          {/* GAMBAR DENGAN SHIMMER */}
+          <div className="h-36 rounded-lg mb-3 relative overflow-hidden">
+            <div className="w-full h-full bg-gray-200 animate-pulse rounded-lg"></div>
 
             {/* STATUS */}
             <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
