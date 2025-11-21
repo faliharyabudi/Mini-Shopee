@@ -55,6 +55,13 @@ export default function HomeScreen() {
           )}
         />
       </View>
+
+      {/* banner promo */}
+      <Pressable style={styles.promoBanner} onPress={() => console.log("Promo clicked")}>
+          <Text style={styles.promoTitle}>Hello,Sport !</Text>
+      </Pressable>
+
+
     </View>
   );
 }
