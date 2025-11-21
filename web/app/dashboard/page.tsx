@@ -39,21 +39,21 @@ export default function ProductsPage() {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-6">
 
       {products.map((item) => (
         <div
           key={item.id}
-          className="bg-white border border-gray-200 rounded-xl p-3 shadow hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+          className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1"
         >
 
           {/* GAMBAR FIX ANTI KEDIP */}
-          <div className="h-36 rounded-lg mb-3 relative overflow-hidden group">
+          <div className="h-36 rounded-lg mb-4 relative overflow-hidden group">
 
             {/* SHIMMER */}
             <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
 
-            {/* LAYER GAMBAR (kosong tapi stabil) */}
+            {/* LAYER GAMBAR */}
             <div className="absolute inset-0 bg-gray-300 rounded-lg transform transition-transform duration-300 group-hover:scale-110"></div>
 
             {/* STATUS */}
@@ -76,11 +76,13 @@ export default function ProductsPage() {
             )}
           </div>
 
-          {/* NAMA PRODUK */}
-          <p className="text-sm font-semibold text-gray-800">{item.name}</p>
+          {/* NAMA */}
+          <p className="text-[13px] font-semibold text-gray-800 leading-tight mb-2">
+            {item.name}
+          </p>
 
           {/* HARGA */}
-          <div className="mb-3">
+          <div className="mb-4">
             {item.oldPrice && (
               <p className="text-xs text-gray-400 line-through">
                 Rp {item.oldPrice.toLocaleString("id-ID")}
@@ -91,6 +93,7 @@ export default function ProductsPage() {
             </p>
           </div>
 
+          {/* BUTTON */}
           <button className="w-full border rounded-lg py-2 text-sm hover:bg-gray-100 active:scale-95 transition font-medium">
             Lihat Detail
           </button>
