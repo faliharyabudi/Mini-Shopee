@@ -4,27 +4,26 @@ export default function ProductsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6">
       <div className="max-w-6xl mx-auto">
 
-        {/* Breadcrumb */}
-        <p className="text-sm text-gray-500 mb-3">
-          Beranda / Produk
+        {/* BREADCRUMB */}
+        <p className="text-xs text-gray-400 mb-3">
+          Beranda / <span className="text-gray-600">Produk</span>
         </p>
 
-        {/* Search Bar */}
-        <div className="mb-4">
+        {/* SEARCH BAR */}
+        <div className="mb-5">
           <input
             type="text"
             placeholder="Cari produk..."
-            className="w-full border rounded-lg px-3 py-2 text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-gray-300 outline-none"
           />
         </div>
 
-        {/* Judul + Tombol */}
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-xl font-semibold">Produk</h1>
-
+        {/* TITLE + BUTTON */}
+        <div className="flex items-center justify-between mb-5">
+          <h1 className="text-xl font-semibold text-gray-900">Produk</h1>
           <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700 active:scale-95 transition">
             Tambah Produk
           </button>
