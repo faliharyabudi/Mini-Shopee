@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function ProductsLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -22,8 +22,11 @@ export default function ProductsLayout({
 
       {/* MAIN CONTENT */}
       <div className="p-6 max-w-6xl mx-auto">
-        <p className="text-sm text-gray-500 mb-2">Beranda / Produk</p>
-        <h1 className="text-xl font-semibold mb-4">Produk</h1>
+        <p className="text-sm text-gray-500 mb-2">
+          Beranda / Dashboard
+        </p>
+        <h1 className="text-xl font-semibold mb-4">Dashboard</h1>
+
         {children}
       </div>
 
@@ -45,7 +48,7 @@ export default function ProductsLayout({
 
         {/* PRODUK */}
         <Link
-          href="/dashboard"
+          href="/dashboard/products"
           className={`flex flex-col items-center transition ${
             activeMenu === "produk"
               ? "text-black font-semibold"
