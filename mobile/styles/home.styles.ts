@@ -52,10 +52,22 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
 
-        elevation: 2, 
+        elevation: 2,
         shadowColor: "#000",
         shadowOpacity: 0.1,
         shadowRadius: 4,
         shadowOffset: { width: 0, height: 2 },
+    },
+
+    notificationBadge: {
+        position: "absolute",
+        right: -2,
+        top: -2,
+        backgroundColor: "red",
+        borderRadius: 8,
+        width: 16,
+        height: 16,
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
