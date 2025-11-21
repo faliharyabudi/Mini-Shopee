@@ -110,4 +110,14 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
     },
+    imageBanner: {
+        width: 200, 
+        height: 200,
+        borderRadius: 0, 
+        position: 'absolute',
+        right: 0,
+        bottom: -19, 
+        zIndex: 5, 
+    },
+
 });
