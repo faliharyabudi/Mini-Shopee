@@ -4,33 +4,48 @@ export default function ProductsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-6">
-      <div className="max-w-6xl mx-auto">
+    <html lang="en">
+      <body className="relative pb-20 bg-gray-50">
 
-        {/* BREADCRUMB */}
-        <p className="text-xs text-gray-400 mb-3">
-          Beranda / <span className="text-gray-600">Produk</span>
-        </p>
+        {/* MAIN CONTENT */}
+        <div className="p-6 max-w-6xl mx-auto">
+          {/* Breadcrumb */}
+          <p className="text-sm text-gray-500 mb-2">Beranda / Produk</p>
 
-        {/* SEARCH BAR */}
-        <div className="mb-5">
-          <input
-            type="text"
-            placeholder="Cari produk..."
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-gray-300 outline-none"
-          />
+          {/* Judul */}
+          <h1 className="text-xl font-semibold mb-4">Produk</h1>
+
+          {children}
         </div>
 
-        {/* TITLE + BUTTON */}
-        <div className="flex items-center justify-between mb-5">
-          <h1 className="text-xl font-semibold text-gray-900">Produk</h1>
-          <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700 active:scale-95 transition">
-            Tambah Produk
-          </button>
-        </div>
+        {/* --- BOTTOM NAVIGATION --- */}
+        <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 py-2 px-6 flex justify-between items-center z-50 rounded-t-2xl">
 
-        {children}
-      </div>
-    </div>
+          {/* HOME */}
+          <div className="flex flex-col items-center text-gray-500 hover:text-black transition cursor-pointer">
+            <span className="text-xl">🏠</span>
+            <p className="text-[11px] mt-1">Home</p>
+          </div>
+
+          {/* PRODUCTS */}
+          <div className="flex flex-col items-center text-gray-900 font-semibold cursor-pointer">
+            <span className="text-xl">🛍️</span>
+            <p className="text-[11px] mt-1">Produk</p>
+          </div>
+
+          {/* CART */}
+          <div className="flex flex-col items-center text-gray-500 hover:text-black transition cursor-pointer">
+            <span className="text-xl">🛒</span>
+            <p className="text-[11px] mt-1">Keranjang</p>
+          </div>
+
+          {/* PROFILE */}
+          <div className="flex flex-col items-center text-gray-500 hover:text-black transition cursor-pointer">
+            <span className="text-xl">👤</span>
+            <p className="text-[11px] mt-1">Profil</p>
+          </div>
+        </nav>
+      </body>
+    </html>
   );
 }
