@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 16,
         padding: 12,
-        height: 170, 
+        height: 165, 
         shadowColor: "#FF8C00",
         shadowOffset: { width: 0, height: 12 },
         shadowOpacity: 0.2,
@@ -96,5 +96,18 @@ export const styles = StyleSheet.create({
         lineHeight: 36,
         maxWidth: '60%',
         marginTop: 8
-    }
+    },
+    tombolPromo: {
+        backgroundColor: '#fff',
+        borderRadius: 24,
+        paddingVertical: 6,
+        paddingHorizontal: 16,
+        marginTop: 10,
+        alignSelf: 'flex-start', 
+    },
+    promoButtonText: {
+        color: '#FF8C00',
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
 });
