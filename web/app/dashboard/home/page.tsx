@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function DashboardHome() {
   return (
     <div className="space-y-6">
@@ -31,14 +29,13 @@ export default function DashboardHome() {
             { name: "Aksesoris", emoji: "⌚" },
             { name: "Sepatu", emoji: "👟" },
           ].map((cat, i) => (
-            <Link
+            <div
               key={i}
-              href="/dashboard/products"
               className="bg-white border rounded-xl p-3 flex flex-col items-center shadow-sm hover:shadow-md transition"
             >
               <span className="text-2xl">{cat.emoji}</span>
               <p className="text-[12px] mt-1">{cat.name}</p>
-            </Link>
+            </div>
           ))}
 
         </div>
@@ -50,15 +47,14 @@ export default function DashboardHome() {
         <div className="grid grid-cols-2 gap-4">
 
           {[1, 2, 3, 4].map((item) => (
-            <Link
+            <div
               key={item}
-              href="/dashboard/products"
               className="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition"
             >
               <div className="h-28 bg-gray-200 rounded-lg mb-2" />
               <p className="text-sm font-semibold">Produk {item}</p>
               <p className="text-sm text-gray-600">Rp 50.000</p>
-            </Link>
+            </div>
           ))}
 
         </div>

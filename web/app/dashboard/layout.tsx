@@ -35,7 +35,7 @@ export default function DashboardLayout({
 
         {/* HOME */}
         <Link
-          href="/"
+          href="/dashboard"
           className={`flex flex-col items-center transition ${
             activeMenu === "home"
               ? "text-black font-semibold"
