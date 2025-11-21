@@ -76,8 +76,8 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FF8C00', 
         marginTop: 20,
         borderRadius: 16,
-        padding: 16,
-        height: 200, 
+        padding: 12,
+        height: 170, 
         shadowColor: "#FF8C00",
         shadowOffset: { width: 0, height: 12 },
         shadowOpacity: 0.2,
@@ -89,4 +89,12 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#fff',
     },
+    promoSubtitle: {
+        fontSize: 28,
+        color: '#fff',
+        fontWeight: '800',
+        lineHeight: 36,
+        maxWidth: '60%',
+        marginTop: 8
+    }
 });
