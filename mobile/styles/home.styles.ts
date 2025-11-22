@@ -120,4 +120,41 @@ export const styles = StyleSheet.create({
         zIndex: 5, 
     },
 
+    storyContainer: {
+        marginBottom: 20,
+        marginTop: 10,
+        marginStart: -20,
+    },
+    storyItem: {
+        alignItems: 'center',
+        marginRight: 15, 
+        width: 70, 
+    },
+    storyRing: {
+        width: 65,
+        height: 65,
+        borderRadius: 32.5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    storyRingUnviewed: {
+        borderWidth: 3,
+        borderColor: '#FF5733', 
+        padding: 2,
+    },
+    storyImage: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 30,
+        borderWidth: 2,
+        borderColor: '#fff', 
+    },
+    storyLabel: {
+        fontSize: 12,
+        color: '#333',
+        fontWeight: '500',
+        textAlign: 'center',
+    },
+
 });
