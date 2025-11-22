@@ -157,4 +157,55 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
+    // Wadah konten ProductCart
+    productRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16, 
+        marginBottom: 20,
+    },
+    // ProdukCart
+    productCard: {
+        width: '48%', 
+        borderRadius: 12, 
+        elevation: 4, 
+        overflow: 'hidden', 
+    },
+    // Gambar ProductCart
+    productCover: {
+        height: 180, 
+    },
+    // Teks prductCart
+    productBrand: {
+        fontSize: 12,
+        color: '#777',
+        fontWeight: '500',
+    },
+    productName: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#333',
+        marginTop: 2,
+    },
+    productRating: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginVertical: 5,
+    },
+    productPrice: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333',
+        marginTop: 5,
+    },
+    heartIcon: {
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        zIndex: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        borderRadius: 15,
+        padding: 4,
+    },
+
 });
