@@ -10,6 +10,17 @@ const storyData = [
   { id: 'story2', label: 'Summer Sale', image: require('./assets/story2.jpeg'), viewed: true },
   { id: 'story3', label: 'Designers', image: require('./assets/story3.jpeg'), viewed: false },
   { id: 'story4', label: 'Styling Tips', image: require('./assets/story4.jpg'), viewed: true },
+  { id: '3', label: 'Designers', image: require('./assets/story3.jpeg'), viewed: false },
+  { id: '4', label: 'Styling Tips', image: require('./assets/story1.jpg'), viewed: true },
+  { id: '1', label: 'New Drop', image: require('./assets/story4.jpg'), viewed: false },
+  { id: '2', label: 'Summer Sale', image: require('./assets/story3.jpeg'), viewed: true },
+  { id: '3', label: 'Designers', image: require('./assets/story2.jpeg'), viewed: false },
+  { id: '4', label: 'Styling Tips', image: require('./assets/story1.jpg'), viewed: true },
+  { id: '1', label: 'New Drop', image: require('./assets/story1.jpg'), viewed: false },
+  { id: '2', label: 'Summer Sale', image: require('./assets/story2.jpeg'), viewed: true },
+  { id: '3', label: 'Designers', image: require('./assets/story3.jpeg'), viewed: false },
+  { id: '4', label: 'Styling Tips', image: require('./assets/story1.jpg'), viewed: true },
+  { id: '1', label: 'New Drop', image: require('./assets/story4.jpg'), viewed: false },
 ];
 
 // Bottom navigation items
@@ -29,35 +40,47 @@ export default function HomeScreen() {
   const renderCategoryContent = () => {
     if (activeCategory === 'stories') {
       return (
-        <View style={styles.storyContainer}>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          >
-            {storyData.map((story) => (
-              <Pressable
-                key={story.id}
-                style={styles.storyItem}
-                onPress={() => console.log(`Open story ${story.id}`)}
-              >
-                {/* Cincin story */}
-                <View
-                  style={[
-                    styles.storyRing,
-                    !story.viewed && styles.storyRingUnviewed
-                  ]}
+        <View>
+          {/* Scroll story */}
+          <View style={styles.storyContainer}>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+            >
+              {storyData.map((story) => (
+                <Pressable
+                  key={story.id}
+                  style={styles.storyItem}
+                  onPress={() => console.log(`Open story ${story.id}`)}
                 >
-                  <Image source={story.image} style={styles.storyImage} />
-                </View>
+                  {/* Cincin story */}
+                  <View
+                    style={[
+                      styles.storyRing,
+                      !story.viewed && styles.storyRingUnviewed
+                    ]}
+                  >
+                    <Image source={story.image} style={styles.storyImage} />
+                  </View>
 
-                {/* Label story */}
-                <Text style={styles.storyLabel} numberOfLines={1}>
-                  {story.label}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
+                  {/* Label story */}
+                  <Text style={styles.storyLabel} numberOfLines={1}>
+                    {story.label}
+                  </Text>
+                </Pressable>
+              ))}
+            </ScrollView>
+          </View>
+
+          {/* hot picks*/}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 16, marginBottom: 8 }}>
+            <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#333' }}>HOT PICKS</Text>
+            <Pressable onPress={() => console.log('See All clicked')}>
+              <Text style={{ fontSize: 14, color: '#ff8c00', marginTop: 10, }}>See All</Text>
+            </Pressable>
+          </View>
+
         </View>
       );
     }
@@ -146,7 +169,7 @@ export default function HomeScreen() {
             <Ionicons
               name={item.icon as any}
               size={24}
-              color={item.active ? '#ff8c00' : '#888'}/>
+              color={item.active ? '#ff8c00' : '#888'} />
             <Text style={{ fontSize: 12, marginTop: 4, color: item.active ? '#ff8c00' : '#888' }}>
               {item.name}
             </Text>
@@ -154,7 +177,7 @@ export default function HomeScreen() {
         ))}
       </View>
 
-      
+
     </View>
   );
 }
