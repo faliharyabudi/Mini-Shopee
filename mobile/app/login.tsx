@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
         fontSize: 80,
         fontWeight: 'bold',
         color: '#ff8c00',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)', 
+        textShadowOffset: { width: 4, height: 6 }, 
+        textShadowRadius: 3, 
     },
     // Gambar Logo
     logoImg: {
