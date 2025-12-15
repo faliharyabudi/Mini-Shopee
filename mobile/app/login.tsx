@@ -9,6 +9,8 @@ export default function SplashScreen() {
             <Image source={logoImage} style={styles.logoImg} />
             {/* Teks Logo */}
             <Text style={styles.logoText}>Mini Shop</Text>
+            {/* Teks Login Sebagai(customer/seller) */}
+            <Text style={styles.loginAs}>Login As</Text>
         </View>
     );
 }
@@ -32,9 +34,18 @@ const styles = StyleSheet.create({
     },
     // Gambar Logo
     logoImg: {
+        // marginTop: ,
         width: 200, 
         height: 100, 
         resizeMode: "contain", 
+    },
+    // beliSebagai
+    loginAs: {
+        fontSize: 26,
+        fontWeight: "bold",
+        marginBottom: 200,
+        marginTop: 90,
+
     },
 });
 
