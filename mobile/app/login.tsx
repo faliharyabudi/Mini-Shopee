@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
+
+const logoImage = require('../assets/images/Logo.png');
 
 export default function SplashScreen() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.logoText}>MiniShop</Text>
+        <View style={styles.container}> 
+            {/* Gambar Logo */}
+            <Image source={logoImage} style={styles.logoImg} />
+            {/* Teks Logo */}
+            <Text style={styles.logoText}>Mini Shop</Text>
         </View>
     );
 }
@@ -14,13 +19,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff', 
+        backgroundColor: '#fff',
     },
+    // TeksLogo
     logoText: {
         fontSize: 80,
         fontWeight: 'bold',
-        color: '#ff8c00', 
-    }
+        color: '#ff8c00',
+    },
+    // Gambar Logo
+    logoImg: {
+        width: 200, 
+        height: 100, 
+        resizeMode: "contain", 
+    },
 });
 
 
