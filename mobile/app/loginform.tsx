@@ -1,18 +1,49 @@
-import { View, Text, StyleSheet, Image, Alert } from "react-native";
-
+import { View, Text, StyleSheet, Image, } from "react-native";
+import { TextInput, Provider as PaperProvider } from "react-native-paper";
+import { useState } from "react";
 
 const logoImage = require('../assets/images/Logo.png');
 
-export default function SplashScreen() {
+export default function LoginForm() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordVisible, setPasswordVisible] = useState(false);
     return (
-        <View style={styles.container}>
-            {/* Gambar Logo */}
-            <Image source={logoImage} style={styles.logoImg} />
-            {/* Teks Logo */}
-            <Text style={styles.logoText}>Mini Shop</Text>
-            {/* Teks Login */}
-            <Text style={styles.teksLogin}>Login</Text>
-        </View>
+        <PaperProvider>
+            <View style={styles.container}>
+                {/* Gambar Logo */}
+                <Image source={logoImage} style={styles.logoImg} />
+                {/* Teks Logo */}
+                <Text style={styles.logoText}>Mini Shop</Text>
+                {/* Teks Login */}
+                <Text style={styles.teksLogin}>Login</Text>
+                {/* Username */}
+                <TextInput
+                    label="Username"
+                    mode="outlined"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    style={styles.input}
+                    textColor="#000"
+                    activeOutlineColor="#ff8c00"
+                    maxLength={30}
+                />
+                {/* Password */}
+                <TextInput
+                    label="Password"
+                    mode="outlined"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!passwordVisible}
+                    style={styles.input}
+                    textColor="#000"
+                    activeOutlineColor="#ff8c00"
+                    maxLength={30}
+                />
+            </View>
+        </PaperProvider>
     );
 }
 
@@ -41,10 +72,17 @@ const styles = StyleSheet.create({
     },
     // TeksLogin
     teksLogin: {
-    fontSize: 30,
-    fontWeight: 900,
-    textAlign: "center",
-    marginTop: 50,
-  },
+        fontSize: 30,
+        fontWeight: "900",
+        textAlign: "center",
+        marginTop: 50,
+        marginBottom: 20,
+    },
+    // input username dan password
+    input: {
+        width: "85%",
+        marginBottom: 15,
+        backgroundColor: "#fff",
+    },
 });
 
