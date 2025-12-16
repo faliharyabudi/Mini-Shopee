@@ -41,6 +41,12 @@ export default function LoginForm() {
                     textColor="#000"
                     activeOutlineColor="#ff8c00"
                     maxLength={30}
+                    right={
+                        <TextInput.Icon
+                            icon={passwordVisible ? "eye-off" : "eye"} // 👁️ icon
+                            onPress={() => setPasswordVisible(!passwordVisible)}
+                        />
+                    }
                 />
             </View>
         </PaperProvider>
