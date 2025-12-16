@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
+
 
 const logoImage = require('../assets/images/Logo.png');
 
@@ -9,7 +10,8 @@ export default function SplashScreen() {
             <Image source={logoImage} style={styles.logoImg} />
             {/* Teks Logo */}
             <Text style={styles.logoText}>Mini Shop</Text>
-
+            {/* Teks Login */}
+            <Text style={styles.teksLogin}>Login</Text>
         </View>
     );
 }
@@ -37,6 +39,12 @@ const styles = StyleSheet.create({
         height: 100,
         resizeMode: "contain",
     },
-    
+    // TeksLogin
+    teksLogin: {
+    fontSize: 30,
+    fontWeight: 900,
+    textAlign: "center",
+    marginTop: 50,
+  },
 });
 
