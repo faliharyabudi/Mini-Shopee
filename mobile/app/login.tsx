@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
+import { router} from "expo-router";
 
 const logoImage = require('../assets/images/Logo.png');
 
@@ -11,12 +12,19 @@ export default function SplashScreen() {
             <Text style={styles.logoText}>Mini Shop</Text>
             {/* Teks Login Sebagai(customer/seller) */}
             <Text style={styles.loginAs}>Login As</Text>
+
             {/* tombol buyyer */}
-            <Pressable style={styles.buttonCustomer}>
+            <Pressable 
+            style={styles.buttonCustomer}
+            onPress={() => router.push("/loginform")}>
                 <Text style={styles.buttonText}>Customer</Text>
             </Pressable>
+    
+
             {/* tombol seller */}
-            <Pressable style={styles.buttonMerchant}>
+            <Pressable 
+            style={styles.buttonMerchant}
+            onPress={() => router.push("/loginform")}>
                 <Text style={styles.buttonText}>Merchant</Text>
             </Pressable>
         </View>
