@@ -71,6 +71,12 @@ export default function LoginForm() {
                 >
                     Login
                 </Button>
+                {/* Teks belum punya akun */}
+                <Pressable
+                    style={styles.havenotaccountContainer}
+                >
+                    <Text style={styles.havenotaccountText}>Have not account yet?</Text>
+                </Pressable>
             </View>
         </PaperProvider>
     );
@@ -115,22 +121,31 @@ const styles = StyleSheet.create({
     },
     // tombol login
     loginButton: {
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 10,
         backgroundColor: "#ff8c00",
         width: "85%",
     },
     forgotPasswordContainer: {
-        alignSelf: 'flex-end', 
+        alignSelf: 'flex-end',
         marginRight: 40,
-        marginBottom: 10,      
     },
     // teks lupa password
     forgotPasswordText: {
-        color: '#ff8c00',      
+        color: '#ff8c00',
         fontSize: 14,
         fontWeight: '600',
-        textDecorationLine: 'underline', 
+        textDecorationLine: 'underline',
+    },
+    havenotaccountContainer: {
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+    // teks belum punya akun
+    havenotaccountText: {
+        color: '#000',
+        fontSize: 14,
+        fontWeight: '600',
     },
 });
 
