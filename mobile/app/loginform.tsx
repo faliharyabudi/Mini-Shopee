@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Image, } from "react-native";
-import { TextInput, Provider as PaperProvider } from "react-native-paper";
+import { View, Text, StyleSheet, Image, Alert, } from "react-native";
+import { TextInput, Button, Provider as PaperProvider } from "react-native-paper";
 import { useState } from "react";
 
 const logoImage = require('../assets/images/Logo.png');
@@ -8,6 +8,12 @@ export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const handleLogin = () => {
+        if (!email || !password) {
+            Alert.alert("Error", "Email dan Password wajib diisi");
+            return;
+        }
+    }
     return (
         <PaperProvider>
             <View style={styles.container}>
@@ -43,11 +49,22 @@ export default function LoginForm() {
                     maxLength={30}
                     right={
                         <TextInput.Icon
-                            icon={passwordVisible ? "eye-off" : "eye"} // 👁️ icon
+                            icon={passwordVisible ? "eye-off" : "eye"}
                             onPress={() => setPasswordVisible(!passwordVisible)}
                         />
                     }
                 />
+                {/* tombol login */}
+                <Button
+                    mode="contained"
+                    onPress={handleLogin}
+                    style={styles.loginButton}
+                    labelStyle={{ fontSize: 25, fontWeight: 900, height: 20}}
+                    contentStyle={{ paddingVertical: 5 }}
+                    textColor="#fff"
+                >
+                    Login
+                </Button>
             </View>
         </PaperProvider>
     );
@@ -89,6 +106,13 @@ const styles = StyleSheet.create({
         width: "85%",
         marginBottom: 15,
         backgroundColor: "#fff",
+    },
+    // tombol login
+    loginButton: {
+        marginTop: 20,
+        borderRadius: 10,
+        backgroundColor: "#ff8c00",
+        width: "85%",
     },
 });
 
