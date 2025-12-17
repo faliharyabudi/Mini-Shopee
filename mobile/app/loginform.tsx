@@ -63,7 +63,6 @@ export default function LoginForm() {
                 {/* tombol login */}
                 <Button
                     mode="contained"
-                    onPress={handleLogin}
                     style={styles.loginButton}
                     labelStyle={{ fontSize: 25, fontWeight: 900, height: 20 }}
                     contentStyle={{ paddingVertical: 5 }}
@@ -76,6 +75,12 @@ export default function LoginForm() {
                     style={styles.havenotaccountContainer}
                 >
                     <Text style={styles.havenotaccountText}>Have not account yet?</Text>
+                </Pressable>
+                {/* Teks sign up */}
+                <Pressable
+                    style={styles.signupContainer}
+                >
+                    <Text style={styles.signupText}>SIGN UP</Text>
                 </Pressable>
             </View>
         </PaperProvider>
@@ -145,7 +150,17 @@ const styles = StyleSheet.create({
     havenotaccountText: {
         color: '#000',
         fontSize: 14,
-        fontWeight: '600',
+        fontWeight: '300',
+    },
+    signupContainer: {
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+    // teks belum punya akun
+    signupText: {
+        color: '#ff8c00',
+        fontSize: 20,
+        fontWeight: '700',
     },
 });
 
