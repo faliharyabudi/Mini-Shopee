@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Alert, } from "react-native";
+import { View, Text, StyleSheet, Image, Alert, Pressable } from "react-native";
 import { TextInput, Button, Provider as PaperProvider } from "react-native-paper";
 import { useState } from "react";
 
@@ -54,12 +54,18 @@ export default function LoginForm() {
                         />
                     }
                 />
+                {/* Teks Lupa Password */}
+                <Pressable
+                    style={styles.forgotPasswordContainer}
+                >
+                    <Text style={styles.forgotPasswordText}>Forget password?</Text>
+                </Pressable>
                 {/* tombol login */}
                 <Button
                     mode="contained"
                     onPress={handleLogin}
                     style={styles.loginButton}
-                    labelStyle={{ fontSize: 25, fontWeight: 900, height: 20}}
+                    labelStyle={{ fontSize: 25, fontWeight: 900, height: 20 }}
                     contentStyle={{ paddingVertical: 5 }}
                     textColor="#fff"
                 >
@@ -113,6 +119,18 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: "#ff8c00",
         width: "85%",
+    },
+    forgotPasswordContainer: {
+        alignSelf: 'flex-end', 
+        marginRight: 40,
+        marginBottom: 10,      
+    },
+    // teks lupa password
+    forgotPasswordText: {
+        color: '#ff8c00',      
+        fontSize: 14,
+        fontWeight: '600',
+        textDecorationLine: 'underline', 
     },
 });
 
