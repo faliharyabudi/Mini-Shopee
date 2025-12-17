@@ -70,18 +70,19 @@ export default function LoginForm() {
                 >
                     Login
                 </Button>
-                {/* Teks belum punya akun */}
-                <Pressable
-                    style={styles.havenotaccountContainer}
-                >
-                    <Text style={styles.havenotaccountText}>Have not account yet?</Text>
-                </Pressable>
-                {/* Teks sign up */}
-                <Pressable
-                    style={styles.signupContainer}
-                >
-                    <Text style={styles.signupText}>SIGN UP</Text>
-                </Pressable>
+                <View style={styles.signupRow}>
+                    {/* Teks belum punya akun */}
+                    <Pressable>
+                        <Text style={styles.havenotaccountText}>
+                            Have not account yet?
+                        </Text>
+                    </Pressable>
+
+                    {/* Teks sign up */}
+                    <Pressable>
+                        <Text style={styles.signupText}>SIGN UP</Text>
+                    </Pressable>
+                </View>
             </View>
         </PaperProvider>
     );
@@ -142,8 +143,9 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textDecorationLine: 'underline',
     },
-    havenotaccountContainer: {
-        alignSelf: 'center',
+    signupRow: {
+        flexDirection: "row",        
+        alignItems: "center",
         marginTop: 10,
     },
     // teks belum punya akun
@@ -151,10 +153,7 @@ const styles = StyleSheet.create({
         color: '#000',
         fontSize: 14,
         fontWeight: '300',
-    },
-    signupContainer: {
-        alignSelf: 'center',
-        marginTop: 10,
+        marginRight: 5,
     },
     // teks belum punya akun
     signupText: {
