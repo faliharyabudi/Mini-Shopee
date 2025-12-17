@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, Alert, Pressable } from "react-native";
+import { View, Text, StyleSheet, Image, Alert, Pressable, TouchableOpacity } from "react-native";
 import { TextInput, Button, Provider as PaperProvider } from "react-native-paper";
 import { useState } from "react";
+import { FontAwesome } from "@expo/vector-icons";
 
 const logoImage = require('../assets/images/Logo.png');
 
@@ -70,6 +71,7 @@ export default function LoginForm() {
                 >
                     Login
                 </Button>
+
                 <View style={styles.signupRow}>
                     {/* Teks belum punya akun */}
                     <Pressable>
@@ -82,6 +84,23 @@ export default function LoginForm() {
                     <Pressable>
                         <Text style={styles.signupText}>SIGN UP</Text>
                     </Pressable>
+                </View>
+
+                <View style={styles.socialSection}>
+                    <Text style={styles.socialLabel}>Or Sign Up Using</Text>
+                    <View style={styles.socialIconsRow}>
+                        <TouchableOpacity style={[styles.iconCircle, { backgroundColor: '#3b5998' }]}>
+                            <FontAwesome name="facebook" size={24} color="white" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={[styles.iconCircle, { backgroundColor: '#1da1f2' }]}>
+                            <FontAwesome name="twitter" size={24} color="white" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={[styles.iconCircle, { backgroundColor: '#ea4335' }]}>
+                            <FontAwesome name="google" size={24} color="white" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </PaperProvider>
@@ -161,5 +180,31 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '700',
     },
+    // social signup  
+    socialSection: {
+        marginTop: 30,
+        alignItems: 'center',
+    },
+    socialLabel: {
+        color: '#666',
+        fontSize: 14,
+        marginBottom: 15,
+    },
+    socialIconsRow: {
+        flexDirection: 'row',
+        gap: 20, 
+    },
+    iconCircle: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 3, 
+        shadowColor: '#000', 
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+    }
 });
 
