@@ -1,3 +1,4 @@
+import DashboardHeader from "@/components/DashboardHeader";
 import SalesTrendChart from "@/components/SalesTrendChart";
 import ProductViewsChart from "@/components/ProductViewsChart";
 import OrdersTable from "@/components/OrdersTable";
@@ -12,7 +13,10 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
+      {/* HEADER */}
+      <DashboardHeader />
+
       {/* STAT */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((s) => (
