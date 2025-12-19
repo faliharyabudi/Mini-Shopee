@@ -3,12 +3,19 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("Semua");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortValue, setSortValue] = useState("default");
+type Product = {
+  id: number;
+  category: string;
+  name: string;
+  price: number;
+  oldPrice?: number | null;
+  discount?: number | null;
+  status: string;
+  isNew: boolean;
+};
 
-  const products = [
+export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
       category: "Pria",
@@ -24,8 +31,6 @@ export default function ProductsPage() {
       category: "Pria",
       name: "Celana Jeans Biru",
       price: 150000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: false,
     },
@@ -34,8 +39,6 @@ export default function ProductsPage() {
       category: "Wanita",
       name: "Hoodie Oversize Abu",
       price: 120000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: true,
     },
@@ -44,116 +47,102 @@ export default function ProductsPage() {
       category: "Aksesoris",
       name: "Kemeja Kotak-Kotak",
       price: 90000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: false,
     },
-  ];
+  ]);
 
-  const filteredCategory =
-    selectedCategory === "Semua"
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
+  const [showForm, setShowForm] = useState(false);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState<number | "">("");
 
-  const filteredSearch = filteredCategory.filter((p) =>
-    p.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleAddProduct = () => {
+    if (!name || !price) return;
 
-  const finalProducts = [...filteredSearch].sort((a, b) => {
-    if (sortValue === "termurah") return a.price - b.price;
-    if (sortValue === "termahal") return b.price - a.price;
-    if (sortValue === "az") return a.name.localeCompare(b.name);
-    if (sortValue === "za") return b.name.localeCompare(a.name);
-    if (sortValue === "terbaru") return Number(b.isNew) - Number(a.isNew);
-    return 0;
-  });
+    setProducts([
+      ...products,
+      {
+        id: products.length + 1,
+        name,
+        price: Number(price),
+        category: "Pria",
+        status: "Tersedia",
+        isNew: true,
+      },
+    ]);
+
+    setName("");
+    setPrice("");
+    setShowForm(false);
+  };
 
   return (
-    <div className="mt-6 mb-10">
-      
-      {/* SEARCH */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Cari produk..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
-        />
+    <div className="mt-6 mb-10 space-y-6">
+      {/* HEADER */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-bold">Daftar Produk</h1>
+
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm"
+        >
+          + Tambah Produk
+        </button>
       </div>
 
-      {/* FILTER + SORT */}
-      <div className="flex items-center justify-between mb-4">
-        <select
-          className="border border-gray-300 rounded-lg p-2 text-sm focus:outline-none"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option>Semua</option>
-          <option>Pria</option>
-          <option>Wanita</option>
-          <option>Aksesoris</option>
-        </select>
-
-        <select
-          className="border border-gray-300 rounded-lg p-2 text-sm focus:outline-none"
-          value={sortValue}
-          onChange={(e) => setSortValue(e.target.value)}
-        >
-          <option value="default">Urutkan</option>
-          <option value="terbaru">Terbaru</option>
-          <option value="termurah">Termurah</option>
-          <option value="termahal">Termahal</option>
-          <option value="az">A - Z</option>
-          <option value="za">Z - A</option>
-        </select>
-      </div>
+      {/* FORM TAMBAH */}
+      {showForm && (
+        <div className="bg-white border rounded-xl p-4 space-y-3 max-w-md">
+          <input
+            type="text"
+            placeholder="Nama produk"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full border rounded px-3 py-2 text-sm"
+          />
+          <input
+            type="number"
+            placeholder="Harga"
+            value={price}
+            onChange={(e) => setPrice(Number(e.target.value))}
+            className="w-full border rounded px-3 py-2 text-sm"
+          />
+          <button
+            onClick={handleAddProduct}
+            className="bg-purple-600 text-white px-4 py-2 rounded text-sm"
+          >
+            Simpan Produk
+          </button>
+        </div>
+      )}
 
       {/* GRID PRODUK */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {finalProducts.map((item) => (
+        {products.map((item) => (
           <div
             key={item.id}
-            className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm hover:shadow-md transition-all"
+            className="bg-white border rounded-xl p-3 shadow-sm"
           >
-            <div className="h-36 bg-gray-100 rounded-lg mb-3 relative overflow-hidden">
-              <div className="w-full h-full bg-gray-300 rounded-lg" />
-
+            <div className="h-36 bg-gray-300 rounded-lg mb-3 relative">
               {item.status && (
-                <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
+                <span className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 rounded">
                   {item.status}
                 </span>
               )}
-
-              {item.discount && (
-                <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">
-                  {item.discount}% OFF
-                </span>
-              )}
-
               {item.isNew && (
-                <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-[2px] rounded">
+                <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-xs px-2 rounded">
                   Baru
                 </span>
               )}
             </div>
 
-            <p className="text-sm font-semibold text-gray-900">{item.name}</p>
-
-            <div className="mb-3">
-              {item.oldPrice && (
-                <p className="text-xs text-gray-400 line-through">
-                  Rp {item.oldPrice.toLocaleString("id-ID")}
-                </p>
-              )}
-              <p className="text-sm text-gray-900 font-semibold">
-                Rp {item.price.toLocaleString("id-ID")}
-              </p>
-            </div>
+            <p className="text-sm font-semibold">{item.name}</p>
+            <p className="text-sm font-bold">
+              Rp {item.price.toLocaleString("id-ID")}
+            </p>
 
             <Link href={`/dashboard/products/${item.id}`}>
-              <button className="w-full border border-gray-300 rounded-lg py-2 text-sm hover:bg-gray-100 transition font-medium">
+              <button className="w-full border rounded-lg py-2 text-sm mt-3">
                 Lihat Detail
               </button>
             </Link>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   const menuAdmin = [
-    { label: "Dashboard", href: "/dashboard/home" },
+    { label: "Dashboard", href: "/dashboard" },
     { label: "Produk", href: "/dashboard/products" },
     { label: "Pesanan", href: "/dashboard/orders" },
     { label: "Kategori", href: "/dashboard/categories" },
