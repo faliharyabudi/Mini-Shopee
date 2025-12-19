@@ -1,12 +1,23 @@
 "use client";
 
 import { Bell, Mail } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function DashboardHeader() {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && query.trim() !== "") {
+      router.push(`/dashboard/products?search=${query}`);
+    }
+  };
+
   return (
     <div className="bg-white border rounded-xl px-6 py-4">
       <div className="flex items-center justify-between">
-        
+
         {/* LEFT */}
         <div>
           <h1 className="text-xl font-bold flex items-center gap-2">
@@ -21,6 +32,9 @@ export default function DashboardHeader() {
             <input
               type="text"
               placeholder="Search your products"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleSearch}
               className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none"
             />
           </div>
