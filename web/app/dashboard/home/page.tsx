@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
+import { products } from "@/lib/products";
 
 ChartJS.register(
   LineElement,
@@ -23,15 +24,6 @@ ChartJS.register(
 );
 
 export default function DashboardHome() {
-  /* ===== DATA PRODUK (SUMBER KONSISTEN) ===== */
-  const products = [
-    { id: 1, name: "Kaos Polos Hitam", price: 50000 },
-    { id: 2, name: "Celana Jeans Biru", price: 150000 },
-    { id: 3, name: "Hoodie Oversize Abu", price: 120000 },
-    { id: 4, name: "Kemeja Kotak-Kotak", price: 90000 },
-  ];
-
-  /* ===== STATISTIK ===== */
   const stats = [
     { title: "Total Pelanggan", value: "1.250" },
     { title: "Total Produk", value: "320" },
@@ -39,7 +31,6 @@ export default function DashboardHome() {
     { title: "Total Penjualan", value: "Rp 75.000.000" },
   ];
 
-  /* ===== SALES TREND ===== */
   const chartData = {
     labels: ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
     datasets: [
@@ -73,7 +64,6 @@ export default function DashboardHome() {
     },
   };
 
-  /* ===== PRODUCT VIEWS ===== */
   const productViewsData = {
     labels: ["Min","Sen","Sel","Rab","Kam","Jum","Sab"],
     datasets: [
@@ -103,41 +93,37 @@ export default function DashboardHome() {
     },
   };
 
-  /* ===== TOP SOLD ITEMS (NAMA DISAMAKAN) ===== */
-  const topProducts = [
-    { name: "Kaos Polos Hitam", value: 75 },
-    { name: "Celana Jeans Biru", value: 60 },
-    { name: "Hoodie Oversize Abu", value: 50 },
-    { name: "Kemeja Kotak-Kotak", value: 40 },
-  ];
+  const topProducts = products.map((p, i) => ({
+    name: p.name,
+    value: [75, 60, 50, 40][i] ?? 30,
+  }));
 
-  /* ===== RECENT ORDERS (NAMA DISAMAKAN) ===== */
   const orders = [
     {
       id: "#ORD001",
       customer: "Andi",
-      product: "Kaos Polos Hitam",
+      product: products[0].name,
       total: "Rp 50.000",
       status: "Selesai",
     },
     {
       id: "#ORD002",
       customer: "Budi",
-      product: "Celana Jeans Biru",
+      product: products[1].name,
       total: "Rp 150.000",
       status: "Diproses",
     },
     {
       id: "#ORD003",
       customer: "Citra",
-      product: "Hoodie Oversize Abu",
+      product: products[2].name,
       total: "Rp 120.000",
       status: "Dikirim",
     },
     {
       id: "#ORD004",
       customer: "Dewi",
-      product: "Kemeja Kotak-Kotak",
+      product: products[3].name,
       total: "Rp 90.000",
       status: "Selesai",
     },
@@ -145,13 +131,11 @@ export default function DashboardHome() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p className="text-gray-500">Ringkasan data Mini Shopee</p>
       </div>
 
-      {/* Statistik */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((item) => (
           <div key={item.title} className="bg-white border rounded-lg p-5">
@@ -161,7 +145,6 @@ export default function DashboardHome() {
         ))}
       </div>
 
-      {/* Grafik */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-white border rounded-lg p-5 lg:col-span-2">
           <h2 className="text-lg font-semibold mb-4">Sales Trend</h2>
@@ -178,7 +161,6 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      {/* Top Sold Items */}
       <div className="bg-white border rounded-lg p-5">
         <h2 className="text-lg font-semibold mb-4">Top Sold Items</h2>
         <div className="space-y-4">
@@ -199,7 +181,6 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      {/* Recent Orders */}
       <div className="bg-white border rounded-lg p-5">
         <h2 className="text-lg font-semibold mb-4">Recent Orders</h2>
         <div className="overflow-x-auto">
