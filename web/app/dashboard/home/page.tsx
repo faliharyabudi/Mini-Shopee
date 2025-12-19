@@ -31,20 +31,7 @@ export default function DashboardHome() {
   ];
 
   const chartData = {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "Mei",
-      "Jun",
-      "Jul",
-      "Agu",
-      "Sep",
-      "Okt",
-      "Nov",
-      "Des",
-    ],
+    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
     datasets: [
       {
         label: "Tahun Ini",
@@ -113,6 +100,13 @@ export default function DashboardHome() {
     },
   };
 
+  const topProducts = [
+    { name: "Sepatu Sneakers", value: 75 },
+    { name: "Kaos Polos", value: 60 },
+    { name: "Jaket Hoodie", value: 50 },
+    { name: "Tas Ransel", value: 40 },
+  ];
+
   return (
     <div className="space-y-8">
       <div>
@@ -120,6 +114,7 @@ export default function DashboardHome() {
         <p className="text-gray-500">Ringkasan data Mini Shopee</p>
       </div>
 
+      {/* Statistik */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((item) => (
           <div key={item.title} className="bg-white border rounded-lg p-5">
@@ -129,6 +124,7 @@ export default function DashboardHome() {
         ))}
       </div>
 
+      {/* Grafik */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-white border rounded-lg p-5 lg:col-span-2">
           <h2 className="text-lg font-semibold mb-4">Sales Trend</h2>
@@ -142,6 +138,28 @@ export default function DashboardHome() {
           <div className="h-72">
             <Bar data={productViewsData} options={barOptions} />
           </div>
+        </div>
+      </div>
+
+      {/* Top Sold Items */}
+      <div className="bg-white border rounded-lg p-5">
+        <h2 className="text-lg font-semibold mb-4">Top Sold Items</h2>
+
+        <div className="space-y-4">
+          {topProducts.map((item) => (
+            <div key={item.name}>
+              <div className="flex justify-between text-sm mb-1">
+                <span>{item.name}</span>
+                <span>{item.value}%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div
+                  className="bg-purple-500 h-2 rounded-full"
+                  style={{ width: `${item.value}%` }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
