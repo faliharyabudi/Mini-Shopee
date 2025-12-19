@@ -1,21 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-type Product = {
-  id: number;
-  category: string;
-  name: string;
-  price: number;
-  oldPrice?: number | null;
-  discount?: number | null;
-  status: string;
-  isNew: boolean;
-};
-
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([
+  const searchParams = useSearchParams();
+
+  const searchFromUrl = searchParams.get("search") ?? "";
+
+  const [selectedCategory, setSelectedCategory] = useState("Semua");
+  const [sortValue, setSortValue] = useState("default");
+
+  // 🔥 searchQuery DIAMBIL LANGSUNG
+  const searchQuery = searchFromUrl;
+
+  const products = [
     {
       id: 1,
       category: "Pria",
@@ -50,99 +50,43 @@ export default function ProductsPage() {
       status: "Tersedia",
       isNew: false,
     },
-  ]);
+  ];
 
-  const [showForm, setShowForm] = useState(false);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState<number | "">("");
+  const filteredCategory =
+    selectedCategory === "Semua"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
-  const handleAddProduct = () => {
-    if (!name || !price) return;
+  const filteredSearch = filteredCategory.filter((p) =>
+    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-    setProducts([
-      ...products,
-      {
-        id: products.length + 1,
-        name,
-        price: Number(price),
-        category: "Pria",
-        status: "Tersedia",
-        isNew: true,
-      },
-    ]);
-
-    setName("");
-    setPrice("");
-    setShowForm(false);
-  };
+  const finalProducts = [...filteredSearch].sort((a, b) => {
+    if (sortValue === "termurah") return a.price - b.price;
+    if (sortValue === "termahal") return b.price - a.price;
+    if (sortValue === "az") return a.name.localeCompare(b.name);
+    if (sortValue === "za") return b.name.localeCompare(a.name);
+    if (sortValue === "terbaru") return Number(b.isNew) - Number(a.isNew);
+    return 0;
+  });
 
   return (
-    <div className="mt-6 mb-10 space-y-6">
-      {/* HEADER */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">Daftar Produk</h1>
+    <div className="mt-6 mb-10">
+      <input
+        value={searchQuery}
+        readOnly
+        className="w-full border rounded-lg px-3 py-2 text-sm mb-4 bg-gray-50"
+      />
 
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm"
-        >
-          + Tambah Produk
-        </button>
-      </div>
-
-      {/* FORM TAMBAH */}
-      {showForm && (
-        <div className="bg-white border rounded-xl p-4 space-y-3 max-w-md">
-          <input
-            type="text"
-            placeholder="Nama produk"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full border rounded px-3 py-2 text-sm"
-          />
-          <input
-            type="number"
-            placeholder="Harga"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
-            className="w-full border rounded px-3 py-2 text-sm"
-          />
-          <button
-            onClick={handleAddProduct}
-            className="bg-purple-600 text-white px-4 py-2 rounded text-sm"
-          >
-            Simpan Produk
-          </button>
-        </div>
-      )}
-
-      {/* GRID PRODUK */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {products.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white border rounded-xl p-3 shadow-sm"
-          >
-            <div className="h-36 bg-gray-300 rounded-lg mb-3 relative">
-              {item.status && (
-                <span className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 rounded">
-                  {item.status}
-                </span>
-              )}
-              {item.isNew && (
-                <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-xs px-2 rounded">
-                  Baru
-                </span>
-              )}
-            </div>
-
-            <p className="text-sm font-semibold">{item.name}</p>
-            <p className="text-sm font-bold">
-              Rp {item.price.toLocaleString("id-ID")}
-            </p>
+        {finalProducts.map((item) => (
+          <div key={item.id} className="bg-white border rounded-xl p-3">
+            <div className="h-36 bg-gray-300 rounded-lg mb-3" />
+            <p className="font-semibold">{item.name}</p>
+            <p>Rp {item.price.toLocaleString("id-ID")}</p>
 
             <Link href={`/dashboard/products/${item.id}`}>
-              <button className="w-full border rounded-lg py-2 text-sm mt-3">
+              <button className="w-full mt-3 border rounded-lg py-2 text-sm">
                 Lihat Detail
               </button>
             </Link>
