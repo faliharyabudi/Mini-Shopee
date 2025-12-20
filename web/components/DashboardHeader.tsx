@@ -2,9 +2,12 @@
 
 export default function DashboardHeader() {
   return (
-    <div className="bg-white border rounded-xl px-6 py-5 space-y-4">
+    <div className="bg-white border rounded-2xl px-6 py-5 space-y-4 relative shadow-sm">
 
-      {/* ROW 1: TITLE + USER */}
+      {/* AKSEN WARNA */}
+      <div className="absolute left-0 top-0 h-full w-1 bg-purple-600 rounded-l-2xl" />
+
+      {/* ROW 1 */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
@@ -16,10 +19,10 @@ export default function DashboardHeader() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="text-gray-500 hover:text-purple-600">
+          <button className="text-gray-500 hover:text-purple-600 transition">
             🔔
           </button>
-          <button className="text-gray-500 hover:text-purple-600">
+          <button className="text-gray-500 hover:text-purple-600 transition">
             ✉️
           </button>
 
@@ -32,7 +35,7 @@ export default function DashboardHeader() {
         </div>
       </div>
 
-      {/* ROW 2: SEARCH */}
+      {/* SEARCH */}
       <div className="relative max-w-md">
         <input
           type="text"
