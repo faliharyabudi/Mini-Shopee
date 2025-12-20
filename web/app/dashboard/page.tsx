@@ -13,11 +13,12 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* HEADER */}
+    <div className="space-y-6">
+
+      {/* ================= HEADER ================= */}
       <DashboardHeader />
 
-      {/* STAT */}
+      {/* ================= STATS ================= */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((s) => (
           <div
@@ -30,7 +31,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* CHART */}
+      {/* ================= CHART ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <SalesTrendChart />
@@ -38,13 +39,14 @@ export default function DashboardPage() {
         <ProductViewsChart />
       </div>
 
-      {/* ORDERS */}
+      {/* ================= ORDERS ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <OrdersTable />
         </div>
         <TopSoldItems />
       </div>
+
     </div>
   );
 }

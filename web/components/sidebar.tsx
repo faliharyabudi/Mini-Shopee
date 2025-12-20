@@ -10,34 +10,18 @@ import {
 } from "lucide-react";
 
 const menus = [
-  {
-    name: "Dashboard",
-    href: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "Produk",
-    href: "/dashboard/products",
-    icon: Package,
-  },
-  {
-    name: "Pesanan",
-    href: "/dashboard/orders",
-    icon: ShoppingCart,
-  },
-  {
-    name: "Kategori",
-    href: "/dashboard/categories",
-    icon: Layers,
-  },
+  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Produk", href: "/dashboard/products", icon: Package },
+  { name: "Pesanan", href: "/dashboard/orders", icon: ShoppingCart },
+  { name: "Kategori", href: "/dashboard/categories", icon: Layers },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white border-r min-h-screen flex flex-col">
-      {/* LOGO / TITLE */}
+    <aside className="w-64 bg-white border-r flex flex-col">
+      {/* LOGO */}
       <div className="px-6 py-5 border-b">
         <h1 className="text-lg font-bold text-purple-600">
           Mini Shopee Admin
@@ -47,7 +31,10 @@ export default function Sidebar() {
       {/* MENU */}
       <nav className="flex-1 px-3 py-4 space-y-1">
         {menus.map((menu) => {
-          const isActive = pathname.startsWith(menu.href);
+          const isActive =
+            pathname === menu.href ||
+            pathname.startsWith(menu.href + "/");
+
           const Icon = menu.icon;
 
           return (
@@ -69,7 +56,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* FOOTER */}
+      {/* USER */}
       <div className="p-4 border-t">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white font-semibold">

@@ -1,59 +1,50 @@
 "use client";
 
-import { Bell, Mail } from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
 export default function DashboardHeader() {
-  const [query, setQuery] = useState("");
-  const router = useRouter();
-
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && query.trim() !== "") {
-      router.push(`/dashboard/products?search=${query}`);
-    }
-  };
-
   return (
-    <div className="bg-white border rounded-xl px-6 py-4">
-      <div className="flex items-center justify-between">
+    <div className="bg-white border rounded-xl px-6 py-5 space-y-4">
 
-        {/* LEFT */}
+      {/* ROW 1: TITLE + USER */}
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold flex items-center gap-2">
+          <h1 className="text-2xl font-bold flex items-center gap-2">
             Hello, Admin 👋
           </h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-gray-500 text-sm">
             Selamat datang kembali di Mini Shopee Admin
           </p>
-
-          {/* SEARCH */}
-          <div className="mt-3 max-w-sm">
-            <input
-              type="text"
-              placeholder="Search your products"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleSearch}
-              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none"
-            />
-          </div>
         </div>
 
-        {/* RIGHT */}
         <div className="flex items-center gap-4">
-          <Bell className="w-5 h-5 text-gray-600 cursor-pointer" />
-          <Mail className="w-5 h-5 text-gray-600 cursor-pointer" />
+          <button className="text-gray-500 hover:text-purple-600">
+            🔔
+          </button>
+          <button className="text-gray-500 hover:text-purple-600">
+            ✉️
+          </button>
 
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+            <div className="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
               A
             </div>
             <span className="text-sm font-medium">Admin</span>
           </div>
         </div>
-
       </div>
+
+      {/* ROW 2: SEARCH */}
+      <div className="relative max-w-md">
+        <input
+          type="text"
+          placeholder="Search your products"
+          className="w-full border rounded-lg pl-10 pr-3 py-2 text-sm
+          focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <span className="absolute left-3 top-2.5 text-gray-400">
+          🔍
+        </span>
+      </div>
+
     </div>
   );
 }
