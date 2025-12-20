@@ -1,3 +1,5 @@
+"use client";
+
 import DashboardHeader from "@/components/DashboardHeader";
 import SalesTrendChart from "@/components/SalesTrendChart";
 import ProductViewsChart from "@/components/ProductViewsChart";
@@ -13,39 +15,59 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
 
       {/* ================= HEADER ================= */}
       <DashboardHeader />
 
       {/* ================= STATS ================= */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((s) => (
-          <div
-            key={s.title}
-            className="bg-white border rounded-xl p-5"
-          >
-            <p className="text-sm text-gray-500">{s.title}</p>
-            <h2 className="text-2xl font-bold mt-2">{s.value}</h2>
-          </div>
-        ))}
-      </div>
-
-      {/* ================= CHART ================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <SalesTrendChart />
+      <section>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((s) => (
+            <div
+              key={s.title}
+              className="bg-white border rounded-xl p-5 shadow-sm"
+            >
+              <p className="text-sm text-gray-500">{s.title}</p>
+              <h2 className="text-2xl font-bold mt-2">{s.value}</h2>
+            </div>
+          ))}
         </div>
-        <ProductViewsChart />
-      </div>
+      </section>
+
+      {/* ================= CHARTS ================= */}
+      <section>
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+          {/* SALES TREND */}
+          <div className="xl:col-span-2 bg-white border rounded-xl p-5 shadow-sm">
+            <SalesTrendChart />
+          </div>
+
+          {/* PRODUCT VIEWS */}
+          <div className="bg-white border rounded-xl p-5 shadow-sm">
+            <ProductViewsChart />
+          </div>
+
+        </div>
+      </section>
 
       {/* ================= ORDERS ================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <OrdersTable />
+      <section>
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+          {/* ORDERS TABLE */}
+          <div className="xl:col-span-2 bg-white border rounded-xl p-5 shadow-sm">
+            <OrdersTable />
+          </div>
+
+          {/* TOP SOLD */}
+          <div className="bg-white border rounded-xl p-5 shadow-sm">
+            <TopSoldItems />
+          </div>
+
         </div>
-        <TopSoldItems />
-      </div>
+      </section>
 
     </div>
   );
