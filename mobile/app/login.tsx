@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { router} from "expo-router";
+import { useRouter } from "expo-router";
 
 const logoImage = require('../assets/images/Logo.png');
 
 export default function SplashScreen() {
+    const router = useRouter();
+
     return (
         <View style={styles.container}>
             {/* Gambar Logo */}
@@ -14,20 +16,28 @@ export default function SplashScreen() {
             <Text style={styles.loginAs}>Login As</Text>
 
             {/* tombol buyyer */}
-            <Pressable 
-            style={styles.buttonCustomer}
-            onPress={() => router.push("/loginform")}>
+            <Pressable
+                style={styles.buttonCustomer}
+                onPress={() => router.push({
+                    pathname: "/loginform",
+                    params: { role: "customer" },
+                })
+                }
+            >
                 <Text style={styles.buttonText}>Customer</Text>
             </Pressable>
-    
+
 
             {/* tombol seller */}
-            <Pressable 
-            style={styles.buttonMerchant}
-            onPress={() => router.push("/loginform")}>
+            <Pressable
+                style={styles.buttonMerchant}
+                onPress={() => router.push({
+                    pathname: "/loginform",
+                    params: { role: "merchant" },
+                })}>
                 <Text style={styles.buttonText}>Merchant</Text>
             </Pressable>
-        </View>
+        </View >
     );
 }
 
