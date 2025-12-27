@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function ProductsPage() {
+  const searchParams = useSearchParams();
+
+  const searchFromUrl = searchParams.get("search") ?? "";
+
   const [selectedCategory, setSelectedCategory] = useState("Semua");
-  const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useState("default");
+
+  // 🔥 searchQuery DIAMBIL LANGSUNG
+  const searchQuery = searchFromUrl;
 
   const products = [
     {
@@ -24,8 +31,6 @@ export default function ProductsPage() {
       category: "Pria",
       name: "Celana Jeans Biru",
       price: 150000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: false,
     },
@@ -34,8 +39,6 @@ export default function ProductsPage() {
       category: "Wanita",
       name: "Hoodie Oversize Abu",
       price: 120000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: true,
     },
@@ -44,8 +47,6 @@ export default function ProductsPage() {
       category: "Aksesoris",
       name: "Kemeja Kotak-Kotak",
       price: 90000,
-      oldPrice: null,
-      discount: null,
       status: "Tersedia",
       isNew: false,
     },
@@ -71,89 +72,21 @@ export default function ProductsPage() {
 
   return (
     <div className="mt-6 mb-10">
-      
-      {/* SEARCH */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Cari produk..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
-        />
-      </div>
+      <input
+        value={searchQuery}
+        readOnly
+        className="w-full border rounded-lg px-3 py-2 text-sm mb-4 bg-gray-50"
+      />
 
-      {/* FILTER + SORT */}
-      <div className="flex items-center justify-between mb-4">
-        <select
-          className="border border-gray-300 rounded-lg p-2 text-sm focus:outline-none"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option>Semua</option>
-          <option>Pria</option>
-          <option>Wanita</option>
-          <option>Aksesoris</option>
-        </select>
-
-        <select
-          className="border border-gray-300 rounded-lg p-2 text-sm focus:outline-none"
-          value={sortValue}
-          onChange={(e) => setSortValue(e.target.value)}
-        >
-          <option value="default">Urutkan</option>
-          <option value="terbaru">Terbaru</option>
-          <option value="termurah">Termurah</option>
-          <option value="termahal">Termahal</option>
-          <option value="az">A - Z</option>
-          <option value="za">Z - A</option>
-        </select>
-      </div>
-
-      {/* GRID PRODUK */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {finalProducts.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white border border-gray-200 rounded-xl p-3 shadow-sm hover:shadow-md transition-all"
-          >
-            <div className="h-36 bg-gray-100 rounded-lg mb-3 relative overflow-hidden">
-              <div className="w-full h-full bg-gray-300 rounded-lg" />
-
-              {item.status && (
-                <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-2 py-[2px] rounded">
-                  {item.status}
-                </span>
-              )}
-
-              {item.discount && (
-                <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-[2px] rounded">
-                  {item.discount}% OFF
-                </span>
-              )}
-
-              {item.isNew && (
-                <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-[2px] rounded">
-                  Baru
-                </span>
-              )}
-            </div>
-
-            <p className="text-sm font-semibold text-gray-900">{item.name}</p>
-
-            <div className="mb-3">
-              {item.oldPrice && (
-                <p className="text-xs text-gray-400 line-through">
-                  Rp {item.oldPrice.toLocaleString("id-ID")}
-                </p>
-              )}
-              <p className="text-sm text-gray-900 font-semibold">
-                Rp {item.price.toLocaleString("id-ID")}
-              </p>
-            </div>
+          <div key={item.id} className="bg-white border rounded-xl p-3">
+            <div className="h-36 bg-gray-300 rounded-lg mb-3" />
+            <p className="font-semibold">{item.name}</p>
+            <p>Rp {item.price.toLocaleString("id-ID")}</p>
 
             <Link href={`/dashboard/products/${item.id}`}>
-              <button className="w-full border border-gray-300 rounded-lg py-2 text-sm hover:bg-gray-100 transition font-medium">
+              <button className="w-full mt-3 border rounded-lg py-2 text-sm">
                 Lihat Detail
               </button>
             </Link>
