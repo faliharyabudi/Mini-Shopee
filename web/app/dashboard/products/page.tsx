@@ -11,7 +11,13 @@ export default function ProductsPage() {
         </button>
       </div>
 
+      {/* CONTENT */}
+      <div className="bg-white border rounded-lg p-6">
+        <p className="text-gray-500">
+          Belum ada produk
+        </p>
       </div>
 
+    </div>
   );
 }
