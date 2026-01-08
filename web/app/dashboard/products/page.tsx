@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 export default function ProductsPage() {
   return (
     <div className="space-y-6">
@@ -12,12 +15,16 @@ export default function ProductsPage() {
       </div>
 
       {/* CONTENT */}
-      <div className="bg-white border rounded-lg p-6">
-        <p className="text-gray-500">
-          Belum ada produk
-        </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Product List</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            Belum ada produk
+          </p>
+        </CardContent>
+      </Card>
       </div>
-
-    </div>
   );
 }
