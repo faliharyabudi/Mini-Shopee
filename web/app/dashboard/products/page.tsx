@@ -1,16 +1,63 @@
 "use client";
 
 import { useState } from "react";
-import { products } from "@/lib/products";
+import { products as initialProducts } from "@/lib/products";
+import type { Product } from "@/lib/products";
+
 import { Button } from "@/components/ui/button";
-import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card";
-import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table";
-import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogTrigger,} from "@/components/ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function ProductsPage() {
   const [open, setOpen] = useState(false);
+
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+
+  function handleAddProduct() {
+    if (!name || !price || !stock) return;
+
+    const newProduct: Product = {
+      id: Date.now(),
+      name,
+      price,
+      stock: Number(stock),
+    };
+
+    setProducts((prev) => [...prev, newProduct]);
+
+    // reset form
+    setName("");
+    setPrice("");
+    setStock("");
+
+    // close modal
+    setOpen(false);
+  }
 
   return (
     <div className="space-y-6">
@@ -32,17 +79,30 @@ export default function ProductsPage() {
             <div className="space-y-4">
               <div className="space-y-1">
                 <Label>Product Name</Label>
-                <Input placeholder="Product Name" />
+                <Input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Products Name"
+                />
               </div>
 
               <div className="space-y-1">
                 <Label>Price</Label>
-                <Input placeholder="Rp 100.000" />
+                <Input
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="Rp 1000.0000"
+                />
               </div>
 
               <div className="space-y-1">
                 <Label>Stock</Label>
-                <Input type="number" placeholder="000" />
+                <Input
+                  type="number"
+                  value={stock}
+                  onChange={(e) => setStock(e.target.value)}
+                  placeholder="00000"
+                />
               </div>
 
               <div className="flex justify-end gap-2 pt-4">
@@ -52,7 +112,7 @@ export default function ProductsPage() {
                 >
                   Cancel
                 </Button>
-                <Button>
+                <Button onClick={handleAddProduct}>
                   Save
                 </Button>
               </div>
