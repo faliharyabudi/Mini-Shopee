@@ -26,12 +26,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function ProductsPage() {
   const [open, setOpen] = useState(false);
-
   const [products, setProducts] = useState<Product[]>(initialProducts);
 
   const [name, setName] = useState("");
@@ -50,13 +59,14 @@ export default function ProductsPage() {
 
     setProducts((prev) => [...prev, newProduct]);
 
-    // reset form
     setName("");
     setPrice("");
     setStock("");
-
-    // close modal
     setOpen(false);
+  }
+
+  function handleDeleteProduct(id: number) {
+    setProducts((prev) => prev.filter((p) => p.id !== id));
   }
 
   return (
@@ -82,7 +92,6 @@ export default function ProductsPage() {
                 <Input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Products Name"
                 />
               </div>
 
@@ -91,7 +100,6 @@ export default function ProductsPage() {
                 <Input
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="Rp 1000.0000"
                 />
               </div>
 
@@ -101,15 +109,11 @@ export default function ProductsPage() {
                   type="number"
                   value={stock}
                   onChange={(e) => setStock(e.target.value)}
-                  placeholder="00000"
                 />
               </div>
 
               <div className="flex justify-end gap-2 pt-4">
-                <Button
-                  variant="secondary"
-                  onClick={() => setOpen(false)}
-                >
+                <Button variant="secondary" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
                 <Button onClick={handleAddProduct}>
@@ -134,9 +138,7 @@ export default function ProductsPage() {
                 <TableHead>Name</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead>Stock</TableHead>
-                <TableHead className="text-right">
-                  Action
-                </TableHead>
+                <TableHead className="text-right">Action</TableHead>
               </TableRow>
             </TableHeader>
 
@@ -149,12 +151,40 @@ export default function ProductsPage() {
                   <TableCell>{product.price}</TableCell>
                   <TableCell>{product.stock}</TableCell>
                   <TableCell className="text-right space-x-2">
+
                     <Button size="sm" variant="secondary">
                       Edit
                     </Button>
-                    <Button size="sm" variant="destructive">
-                      Delete
-                    </Button>
+
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button size="sm" variant="destructive">
+                          Delete
+                        </Button>
+                      </AlertDialogTrigger>
+
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            Hapus produk ini?
+                          </AlertDialogTitle>
+                        </AlertDialogHeader>
+
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() =>
+                              handleDeleteProduct(product.id)
+                            }
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+
                   </TableCell>
                 </TableRow>
               ))}
