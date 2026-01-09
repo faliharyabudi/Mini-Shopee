@@ -42,26 +42,40 @@ import { Label } from "@/components/ui/label";
 export default function ProductsPage() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(initialProducts);
-
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
 
-  function handleAddProduct() {
+  function handleSaveProduct() {
     if (!name || !price || !stock) return;
 
-    const newProduct: Product = {
-      id: Date.now(),
-      name,
-      price,
-      stock: Number(stock),
-    };
+    if (editingId === null) {
+      // ADD
+      const newProduct: Product = {
+        id: Date.now(),
+        name,
+        price,
+        stock: Number(stock),
+      };
 
-    setProducts((prev) => [...prev, newProduct]);
+      setProducts((prev) => [...prev, newProduct]);
+    } else {
+      // EDIT
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === editingId
+            ? { ...p, name, price, stock: Number(stock) }
+            : p
+        )
+      );
+    }
 
+    // RESET
     setName("");
     setPrice("");
     setStock("");
+    setEditingId(null);
     setOpen(false);
   }
 
@@ -83,7 +97,9 @@ export default function ProductsPage() {
 
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add Product</DialogTitle>
+              <DialogTitle>
+                {editingId === null ? "Add Product" : "Edit Product"}
+              </DialogTitle>
             </DialogHeader>
 
             <div className="space-y-4">
@@ -116,7 +132,7 @@ export default function ProductsPage() {
                 <Button variant="secondary" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleAddProduct}>
+                <Button onClick={handleSaveProduct}>
                   Save
                 </Button>
               </div>
@@ -152,7 +168,17 @@ export default function ProductsPage() {
                   <TableCell>{product.stock}</TableCell>
                   <TableCell className="text-right space-x-2">
 
-                    <Button size="sm" variant="secondary">
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => {
+                        setEditingId(product.id);
+                        setName(product.name);
+                        setPrice(product.price);
+                        setStock(String(product.stock));
+                        setOpen(true);
+                      }}
+                    >
                       Edit
                     </Button>
 
