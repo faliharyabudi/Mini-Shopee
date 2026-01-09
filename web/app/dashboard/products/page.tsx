@@ -1,10 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card";
-import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,
-} from "@/components/ui/table";
+import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table";
+import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogTrigger,} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function ProductsPage() {
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="space-y-6">
@@ -13,16 +19,54 @@ export default function ProductsPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Products</h1>
 
-        <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
-          + Add Product
-        </button>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <Button>+ Add Product</Button>
+          </DialogTrigger>
+
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add Product</DialogTitle>
+            </DialogHeader>
+
+            <div className="space-y-4">
+              <div className="space-y-1">
+                <Label>Product Name</Label>
+                <Input placeholder="Product Name" />
+              </div>
+
+              <div className="space-y-1">
+                <Label>Price</Label>
+                <Input placeholder="Rp 100.000" />
+              </div>
+
+              <div className="space-y-1">
+                <Label>Stock</Label>
+                <Input type="number" placeholder="000" />
+              </div>
+
+              <div className="flex justify-end gap-2 pt-4">
+                <Button
+                  variant="secondary"
+                  onClick={() => setOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button>
+                  Save
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
-      {/* CONTENT */}
+      {/* TABLE */}
       <Card>
         <CardHeader>
           <CardTitle>Product List</CardTitle>
         </CardHeader>
+
         <CardContent>
           <Table>
             <TableHeader>
@@ -58,6 +102,7 @@ export default function ProductsPage() {
           </Table>
         </CardContent>
       </Card>
+
     </div>
   );
 }
