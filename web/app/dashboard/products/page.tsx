@@ -5,12 +5,7 @@ import { products as initialProducts } from "@/lib/products";
 import type { Product } from "@/lib/products";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -38,6 +33,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ProductsPage() {
   const [open, setOpen] = useState(false);
@@ -46,20 +42,34 @@ export default function ProductsPage() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
+  const { toast } = useToast();
 
   function handleSaveProduct() {
-    if (!name || !price || !stock) return;
+    if (!name || !price || !stock) {
+      toast({
+        title: "Form belum lengkap",
+        description: "Nama, harga, dan stok wajib diisi",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (editingId === null) {
       // ADD
-      const newProduct: Product = {
-        id: Date.now(),
-        name,
-        price,
-        stock: Number(stock),
-      };
+      setProducts((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          name,
+          price,
+          stock: Number(stock),
+        },
+      ]);
 
-      setProducts((prev) => [...prev, newProduct]);
+      toast({
+        title: "Produk ditambahkan",
+        description: `${name} berhasil ditambahkan`,
+      });
     } else {
       // EDIT
       setProducts((prev) =>
@@ -69,6 +79,11 @@ export default function ProductsPage() {
             : p
         )
       );
+
+      toast({
+        title: "Produk diperbarui",
+        description: `${name} berhasil diperbarui`,
+      });
     }
 
     // RESET
@@ -81,11 +96,16 @@ export default function ProductsPage() {
 
   function handleDeleteProduct(id: number) {
     setProducts((prev) => prev.filter((p) => p.id !== id));
+
+    toast({
+      title: "Produk dihapus",
+      description: "Produk berhasil dihapus",
+      variant: "destructive",
+    });
   }
 
   return (
     <div className="space-y-6">
-
       {/* HEADER */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Products</h1>
@@ -105,18 +125,12 @@ export default function ProductsPage() {
             <div className="space-y-4">
               <div className="space-y-1">
                 <Label>Product Name</Label>
-                <Input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <Input value={name} onChange={(e) => setName(e.target.value)} />
               </div>
 
               <div className="space-y-1">
                 <Label>Price</Label>
-                <Input
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
+                <Input value={price} onChange={(e) => setPrice(e.target.value)} />
               </div>
 
               <div className="space-y-1">
@@ -132,9 +146,7 @@ export default function ProductsPage() {
                 <Button variant="secondary" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleSaveProduct}>
-                  Save
-                </Button>
+                <Button onClick={handleSaveProduct}>Save</Button>
               </div>
             </div>
           </DialogContent>
@@ -167,7 +179,6 @@ export default function ProductsPage() {
                   <TableCell>{product.price}</TableCell>
                   <TableCell>{product.stock}</TableCell>
                   <TableCell className="text-right space-x-2">
-
                     <Button
                       size="sm"
                       variant="secondary"
@@ -197,20 +208,15 @@ export default function ProductsPage() {
                         </AlertDialogHeader>
 
                         <AlertDialogFooter>
-                          <AlertDialogCancel>
-                            Cancel
-                          </AlertDialogCancel>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
                           <AlertDialogAction
-                            onClick={() =>
-                              handleDeleteProduct(product.id)
-                            }
+                            onClick={() => handleDeleteProduct(product.id)}
                           >
                             Delete
                           </AlertDialogAction>
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>
-
                   </TableCell>
                 </TableRow>
               ))}
@@ -218,7 +224,6 @@ export default function ProductsPage() {
           </Table>
         </CardContent>
       </Card>
-
     </div>
   );
 }
