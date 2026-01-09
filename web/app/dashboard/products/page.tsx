@@ -1,29 +1,10 @@
+import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card";
 import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,
 } from "@/components/ui/table";
 
 export default function ProductsPage() {
-  const products = [
-    {
-      id: 1,
-      name: "Dior",
-      price: "Rp 499.000",
-      stock: 20,
-    },
-    {
-      id: 2,
-      name: "Reebok",
-      price: "Rp 699.000",
-      stock: 50,
-    },
-    {
-      id: 3,
-      name: "Supreme",
-      price: "Rp 620.000",
-      stock: 15,
-    },
-  ];
 
   return (
     <div className="space-y-6">
