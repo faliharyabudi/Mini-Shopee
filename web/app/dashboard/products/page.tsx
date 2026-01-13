@@ -1,229 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import { products as initialProducts } from "@/lib/products";
 import type { Product } from "@/lib/products";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
+
+import { useProducts } from "./hooks/useProducts";
+import ProductTable from "./components/ProductTable";
+import ProductFormDialog from "./components/ProductFormDialog";
 
 export default function ProductsPage() {
+  const { products, addProduct, updateProduct, deleteProduct } =
+    useProducts();
+
   const [open, setOpen] = useState(false);
-  const [products, setProducts] = useState<Product[]>(initialProducts);
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const { toast } = useToast();
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
-  function handleSaveProduct() {
-    if (!name || !price || !stock) {
-      toast({
-        title: "Form belum lengkap",
-        description: "Nama, harga, dan stok wajib diisi",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (editingId === null) {
-      // ADD
-      setProducts((prev) => [
-        ...prev,
-        {
-          id: Date.now(),
-          name,
-          price,
-          stock: Number(stock),
-        },
-      ]);
-
-      toast({
-        title: "Produk ditambahkan",
-        description: `${name} berhasil ditambahkan`,
-      });
-    } else {
-      // EDIT
-      setProducts((prev) =>
-        prev.map((p) =>
-          p.id === editingId
-            ? { ...p, name, price, stock: Number(stock) }
-            : p
-        )
-      );
-
-      toast({
-        title: "Produk diperbarui",
-        description: `${name} berhasil diperbarui`,
-      });
-    }
-
-    // RESET
-    setName("");
-    setPrice("");
-    setStock("");
-    setEditingId(null);
-    setOpen(false);
-  }
-
-  function handleDeleteProduct(id: number) {
-    setProducts((prev) => prev.filter((p) => p.id !== id));
-
-    toast({
-      title: "Produk dihapus",
-      description: "Produk berhasil dihapus",
-      variant: "destructive",
-    });
+  function handleSubmit(product: Product) {
+    editingProduct ? updateProduct(product) : addProduct(product);
+    setEditingProduct(null);
   }
 
   return (
     <div className="space-y-6">
-      {/* HEADER */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Products</h1>
+      <div className="flex justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Products</h1>
+          <p className="text-sm text-gray-500">
+            Kelola daftar produk Mini Shopee
+          </p>
+        </div>
 
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button>+ Add Product</Button>
-          </DialogTrigger>
-
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>
-                {editingId === null ? "Add Product" : "Edit Product"}
-              </DialogTitle>
-            </DialogHeader>
-
-            <div className="space-y-4">
-              <div className="space-y-1">
-                <Label>Product Name</Label>
-                <Input value={name} onChange={(e) => setName(e.target.value)} />
-              </div>
-
-              <div className="space-y-1">
-                <Label>Price</Label>
-                <Input value={price} onChange={(e) => setPrice(e.target.value)} />
-              </div>
-
-              <div className="space-y-1">
-                <Label>Stock</Label>
-                <Input
-                  type="number"
-                  value={stock}
-                  onChange={(e) => setStock(e.target.value)}
-                />
-              </div>
-
-              <div className="flex justify-end gap-2 pt-4">
-                <Button variant="secondary" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button onClick={handleSaveProduct}>Save</Button>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
+        <Button onClick={() => setOpen(true)}>+ Add Product</Button>
       </div>
 
-      {/* TABLE */}
       <Card>
         <CardHeader>
           <CardTitle>Product List</CardTitle>
         </CardHeader>
-
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Stock</TableHead>
-                <TableHead className="text-right">Action</TableHead>
-              </TableRow>
-            </TableHeader>
-
-            <TableBody>
-              {products.map((product) => (
-                <TableRow key={product.id}>
-                  <TableCell className="font-medium">
-                    {product.name}
-                  </TableCell>
-                  <TableCell>{product.price}</TableCell>
-                  <TableCell>{product.stock}</TableCell>
-                  <TableCell className="text-right space-x-2">
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      onClick={() => {
-                        setEditingId(product.id);
-                        setName(product.name);
-                        setPrice(product.price);
-                        setStock(String(product.stock));
-                        setOpen(true);
-                      }}
-                    >
-                      Edit
-                    </Button>
-
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button size="sm" variant="destructive">
-                          Delete
-                        </Button>
-                      </AlertDialogTrigger>
-
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>
-                            Hapus produk ini?
-                          </AlertDialogTitle>
-                        </AlertDialogHeader>
-
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction
-                            onClick={() => handleDeleteProduct(product.id)}
-                          >
-                            Delete
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <ProductTable
+            products={products}
+            onEdit={(product) => {
+              setEditingProduct(product);
+              setOpen(true);
+            }}
+            onDelete={deleteProduct}
+          />
         </CardContent>
       </Card>
+
+      <ProductFormDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        onSubmit={handleSubmit}
+        initialData={editingProduct}
+      />
     </div>
   );
 }
