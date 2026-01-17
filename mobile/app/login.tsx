@@ -1,100 +1,99 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 
-const logoImage = require('../assets/images/Logo.png');
+// PATH ASSET YANG BENAR
+const logoImage = require("./assets/images/Logo.png");
 
 export default function SplashScreen() {
-    const router = useRouter();
+  const router = useRouter();
 
-    return (
-        <View style={styles.container}>
-            {/* Gambar Logo */}
-            <Image source={logoImage} style={styles.logoImg} />
-            {/* Teks Logo */}
-            <Text style={styles.logoText}>Mini Shop</Text>
-            {/* Teks Login Sebagai(customer/seller) */}
-            <Text style={styles.loginAs}>Login As</Text>
+  return (
+    <View style={styles.container}>
+      {/* Logo */}
+      <Image source={logoImage} style={styles.logoImg} />
 
-            {/* tombol buyyer */}
-            <Pressable
-                style={styles.buttonCustomer}
-                onPress={() => router.push({
-                    pathname: "/loginform",
-                    params: { role: "customer" },
-                })
-                }
-            >
-                <Text style={styles.buttonText}>Customer</Text>
-            </Pressable>
+      {/* Judul */}
+      <Text style={styles.logoText}>Mini Shop</Text>
 
+      {/* Sub Judul */}
+      <Text style={styles.loginAs}>Login As</Text>
 
-            {/* tombol seller */}
-            <Pressable
-                style={styles.buttonMerchant}
-                onPress={() => router.push({
-                    pathname: "/loginform",
-                    params: { role: "merchant" },
-                })}>
-                <Text style={styles.buttonText}>Merchant</Text>
-            </Pressable>
-        </View >
-    );
+      {/* Tombol Customer */}
+      <Pressable
+        style={styles.buttonCustomer}
+        onPress={() =>
+          router.push({
+            pathname: "/loginform",
+            params: { role: "customer" },
+          })
+        }
+      >
+        <Text style={styles.buttonText}>Customer</Text>
+      </Pressable>
+
+      {/* Tombol Merchant */}
+      <Pressable
+        style={styles.buttonMerchant}
+        onPress={() =>
+          router.push({
+            pathname: "/loginform",
+            params: { role: "merchant" },
+          })
+        }
+      >
+        <Text style={styles.buttonText}>Merchant</Text>
+      </Pressable>
+    </View>
+  );
 }
 
-// STYLES
+// ================= STYLES =================
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
-    // TeksLogo
-    logoText: {
-        fontSize: 80,
-        fontWeight: 'bold',
-        color: '#ff8c00',
-        textShadowColor: 'rgba(0, 0, 0, 0.75)',
-        textShadowOffset: { width: 4, height: 6 },
-        textShadowRadius: 3,
-    },
-    // Gambar Logo
-    logoImg: {
-        width: 200,
-        height: 100,
-        resizeMode: "contain",
-    },
-    // beliSebagai
-    loginAs: {
-        fontSize: 20,
-        marginBottom: 20,
-        marginTop: 50,
-        fontWeight: "900",
-    },
-    // Tombol buyer
-    buttonCustomer: {
-        width: "50%",
-        padding: 5,
-        borderRadius: 10,
-        backgroundColor: "#ff8c00",
-        alignItems: "center",
-        marginBottom: 12,
-    },
-    // tombol penjual
-    buttonMerchant: {
-        width: "50%",
-        padding: 5,
-        borderRadius: 10,
-        backgroundColor: "#333",
-        alignItems: "center",
-    },
-    // teks Tombol
-    buttonText: {
-        color: "#fff",
-        fontSize: 32,
-        fontWeight: "600",
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
+  logoText: {
+    fontSize: 60,
+    fontWeight: "bold",
+    color: "#ff8c00",
+    textShadowColor: "rgba(0, 0, 0, 0.5)",
+    textShadowOffset: { width: 2, height: 4 },
+    textShadowRadius: 3,
+    marginBottom: 20,
+  },
+  logoImg: {
+    width: 220,
+    height: 120,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  loginAs: {
+    fontSize: 22,
+    marginBottom: 20,
+    marginTop: 30,
+    fontWeight: "700",
+  },
+  buttonCustomer: {
+    width: "60%",
+    paddingVertical: 10,
+    borderRadius: 10,
+    backgroundColor: "#ff8c00",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  buttonMerchant: {
+    width: "60%",
+    paddingVertical: 10,
+    borderRadius: 10,
+    backgroundColor: "#333",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 26,
+    fontWeight: "600",
+  },
 });
-
-
-
