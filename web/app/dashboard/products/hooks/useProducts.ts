@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { products as initialProducts } from "@/lib/products";
 import type { Product } from "@/lib/products";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
+
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>(initialProducts);
