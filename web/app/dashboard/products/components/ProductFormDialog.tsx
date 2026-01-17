@@ -3,7 +3,12 @@
 import { useState, useEffect } from "react";
 import type { Product } from "@/lib/products";
 
-import {Dialog,DialogContent,DialogHeader,DialogTitle,} from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,6 +50,7 @@ export default function ProductFormDialog({
       name: form.name,
       price: form.price,
       stock: Number(form.stock),
+      image: initialData?.image ?? "", 
     });
 
     setForm({ name: "", price: "", stock: "" });
